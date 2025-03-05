@@ -1,54 +1,79 @@
-# React + TypeScript + Vite
+# Move2Fit - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<br />
 
-Currently, two official plugins are available:
+<div align="center">
+    <img src="" alt="Logo da Move2Fit"/>
+</div>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<br /> <br />
 
-## Expanding the ESLint configuration
+## 1. Descrição
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Essa aplicação foi desenvolvida com o objetivo de ajudar pessoas a se organizarem melhor e registrarem os exercícios que realizam na academia. Para isso, oferecemos um sistema completo de cadastro de exercícios, permitindo a categorização detalhada de cada atividade. Além disso, os exercícios podem ser acompanhados por informações como carga utilizada, número de repetições e tempo de execução. Dessa forma, os usuários conseguem manter um histórico preciso e estruturado, evitando que informações importantes, mas muitas vezes esquecidas por serem simples e curtas, se percam ao longo do tempo.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 2. Sobre esta API
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+API foi criada para fazer gestão de exercícios, cargas, tempo e repetição, onde pode ser registrada essas informações, também deixando-as disponíveis para possíveis alterações e até mesmo exclusão.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### 2.1. Principais Funcionalidades
+
+#### 1. **Gerenciamento de usuários**
+
+- Cadastrar, atualizar e excluir usuários.
+- Buscar usuários por nome, e-mail ou ID.
+- Cálculo automático do IMC.
+- Listar todos os usuários cadastrados
+
+#### 2. **Gerenciamento de categorias**
+
+- Cadastrar, atualizar e excluir categorias.
+- Buscar categoria por nome ou ID.
+- Listar todas as categorias cadastradas.
+
+#### 3. **Gerenciamento de exercícios**
+
+- Cadastrar, atualizar e excluir exercícios.
+- Buscar exercício por nome ou ID.
+- Listar todos os exercícios cadastrados.
+
+---
+
+### Diferenciais do Sistema
+
+- **Fácil de usar**: Interface simples e intuitiva.
+- **Organização total**: Tudo centralizado em um só lugar.
+- **Seguro e confiável**: Desenvolvido com tecnologia moderna.
+
+---
+
+## 3. Layout da Aplicação
+
+[Layout Figma]()
+
+<div align="center">
+    <img src="" alt="Foto do layout" width="50%" />
+</div>
+
+---
+
+## 4. Tecnologias utilizadas
+
+| Item                          | Descrição  |
+| ----------------------------- | ---------- |
+| **Biblioteca**                | React      |
+| **Linguagem de programação**  | TypeScript |
+| **Biblioteca de Estilização** | Tailwind   |
+| **Linguagem de Marcação**     | HTML       |
+
+---
+
+## 5. Configuração e Execução
+
+1. Clone o repositório
+2. Instale as dependências: `yarn`
+3. Faça uma copia do arquivo `.env.example` para `.env`
+4. Define a variável `VITE_API_URL` com **URL** do back-end
+3. Execute a aplicação: `yarn dev`
