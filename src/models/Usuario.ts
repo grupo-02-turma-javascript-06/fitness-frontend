@@ -7,5 +7,5 @@ export default interface Usuario {
 	peso: number;
 	altura: number;
 	imc: number;
-	classificacao: string;
+	classificacao?: string;
 }

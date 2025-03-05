@@ -1,12 +1,20 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './LoginCadastroForm.css';
 import Usuario from '../../models/Usuario';
 import { cadastrarUsuario } from '../../services/Service';
-import { FacebookLogo, GithubLogo, GoogleChromeLogo, LinkedinLogo } from '@phosphor-icons/react';
+import { FacebookLogo, GithubLogo, GoogleLogo, LinkedinLogo, Eye, EyeSlash } from '@phosphor-icons/react';
+import { ToastAlerta } from '../../utils/ToasstAlerta';
 import { RotatingLines } from 'react-loader-spinner';
 
 const Cadastro: React.FC = () => {
+
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [confirmaSenha, setConfirmaSenha] = useState<string>("");
@@ -19,7 +27,6 @@ const Cadastro: React.FC = () => {
         peso: 0,
         altura: 0,
         imc: 0,
-        classificacao: ''
     });
 
     useEffect(() => {
@@ -29,7 +36,12 @@ const Cadastro: React.FC = () => {
     }, [usuario]);
 
     function retornar() {
-        navigate('/login');
+        if (usuario.id !== 0) {
+            navigate('/login', { replace: true });
+            window.location.reload();
+        } else {
+            navigate('/login');
+        }
     }
 
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
@@ -51,12 +63,12 @@ const Cadastro: React.FC = () => {
 
             try {
                 await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario);
-                alert('Usuário cadastrado com sucesso!');
+                ToastAlerta('Usuário cadastrado com sucesso!', 'sucesso');
             } catch (error) {
-                alert('Erro ao cadastrar o usuário!');
+                ToastAlerta('Erro ao cadastrar o usuário!', 'erro');
             }
         } else {
-            alert('Dados estão inconsistentes. Verifique as informações do cadastro');
+            ToastAlerta('Dados estão inconsistentes. Verifique as informações do cadastro', 'erro');
             setUsuario({ ...usuario, senha: '' });
             setConfirmaSenha('');
         }
@@ -68,7 +80,7 @@ const Cadastro: React.FC = () => {
         <>
             <form className="w-full max-w-md mx-auto p-6" onSubmit={cadastrarNovoUsuario}>
                 <h1 className="text-3xl font-semibold mb-6 text-gray-700">Cadastro</h1>
-                <div className="relative mb-1">
+                <div className="relative mb-3">
                     <input
                         type="text"
                         name='nome'
@@ -79,7 +91,7 @@ const Cadastro: React.FC = () => {
                     />
                     <i className="bx bxs-user absolute right-5 top-1/2 transform -translate-y-1/2 text-2xl text-gray-700"></i>
                 </div>
-                <div className="relative mb-1">
+                <div className="relative mb-3">
                     <input
                         type="email"
                         name='usuario'
@@ -90,9 +102,9 @@ const Cadastro: React.FC = () => {
                     />
                     <i className="bx bxs-envelope absolute right-5 top-1/2 transform -translate-y-1/2 text-2xl text-gray-700"></i>
                 </div>
-                <div className="relative mb-1">
+                <div className="relative mb-3">
                     <input
-                        type="password"
+                        type={showPassword ? 'text' : 'password'}
                         id="senha"
                         name="senha"
                         placeholder="Senha"
@@ -100,11 +112,24 @@ const Cadastro: React.FC = () => {
                         value={usuario.senha}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
+                    {showPassword ? (
+                        <Eye
+                            size={25}
+                            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer"
+                            onClick={togglePasswordVisibility}
+                        />
+                    ) : (
+                        <EyeSlash
+                            size={25}
+                            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer"
+                            onClick={togglePasswordVisibility}
+                        />
+                    )}
                     <i className="bx bxs-lock-alt absolute right-5 top-1/2 transform -translate-y-1/2 text-2xl text-gray-700"></i>
                 </div>
-                <div className="relative mb-1">
+                <div className="relative mb-3">
                     <input
-                        type="password"
+                        type={showPassword ? 'text' : 'password'}
                         id="confirmarSenha"
                         name="confirmarSenha"
                         placeholder="Confirmar Senha"
@@ -112,9 +137,22 @@ const Cadastro: React.FC = () => {
                         value={confirmaSenha}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => handleConfirmarSenha(e)}
                     />
+                    {showPassword ? (
+                        <Eye
+                            size={25}
+                            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer"
+                            onClick={togglePasswordVisibility}
+                        />
+                    ) : (
+                        <EyeSlash
+                            size={25}
+                            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer"
+                            onClick={togglePasswordVisibility}
+                        />
+                    )}
                     <i className="bx bxs-lock-alt absolute right-5 top-1/2 transform -translate-y-1/2 text-2xl text-gray-700"></i>
                 </div>
-                <div className="relative mb-1">
+                <div className="relative mb-3">
                     <input
                         id='foto'
                         name='foto'
@@ -126,20 +164,8 @@ const Cadastro: React.FC = () => {
                     />
                     <i className="bx bxs-image absolute right-5 top-1/2 transform -translate-y-1/2 text-2xl text-gray-700"></i>
                 </div>
-                <div className="relative mb-1">
-                    <input
-                        id='classificacao'
-                        type="text"
-                        name='classificacao'
-                        placeholder="Classificação"
-                        className="w-full py-3 pl-5 pr-12 bg-gray-200 rounded-2xl text-gray-700 font-medium text-base outline-none placeholder-gray-500"
-                        value={usuario.classificacao}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-                    />
-                    <i className="bx bxs-user absolute right-5 top-1/2 transform -translate-y-1/2 text-2xl text-gray-700"></i>
-                </div>
                 <div className="flex w-auto justify-between items-center space-x-4">
-                    <div className="w-full relative mb-1">
+                    <div className="w-full relative mb-3">
                         <input
                             id='peso'
                             name='peso'
@@ -151,7 +177,7 @@ const Cadastro: React.FC = () => {
                         />
                         <i className="bx bxs-weight absolute right-5 top-1/2 transform -translate-y-1/2 text-2xl text-gray-700"></i>
                     </div>
-                    <div className="w-full relative mb-1">
+                    <div className="w-full relative mb-3">
                         <input
                             id='altura'
                             name='altura'
@@ -166,7 +192,8 @@ const Cadastro: React.FC = () => {
                 </div>
                 <button
                     type="submit"
-                    className="w-full h-12 bg-[#FD6101] rounded-2xl shadow-md text-white font-semibold text-base">
+                    className="w-full h-12 bg-[#FD6101] rounded-2xl shadow-md text-white font-semibold text-base cursor-pointer flex items-center justify-center"
+                    onClick={retornar}>
                     {isLoading ? <RotatingLines
                         strokeColor="white"
                         strokeWidth="5"
@@ -177,12 +204,12 @@ const Cadastro: React.FC = () => {
                         <span>Cadastrar</span>
                     }
                 </button>
-                <p className="text-sm text-gray-700 mt-1 mb-1">cadastre-se com redes sociais</p>
+                <p className="text-sm text-gray-700 mt-1 mb-3">cadastre-se com redes sociais</p>
                 <div className="flex justify-center space-x-4">
                     <a
                         href="#"
                         className="inline-flex p-2 ">
-                        <GoogleChromeLogo size={35} weight='bold' className='hover:text-[#FD6101]' />
+                        <GoogleLogo size={35} weight='bold' className='hover:text-[#FD6101]' />
                     </a>
                     <a
                         href="#"
