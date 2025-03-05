@@ -1,14 +1,6 @@
 /* LoginCadastroForm.css */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-    text-decoration: none;
-    list-style: none;
-}
 
 body {
     display: flex;
@@ -21,7 +13,7 @@ body {
 .container {
     position: relative;
     width: 850px;
-    height: 550px;
+    height: 600px;
     background: #fff;
     margin: 20px;
     border-radius: 30px;
@@ -31,7 +23,6 @@ body {
 
 .container h1 {
     font-size: 36px;
-    margin: -10px 0;
 }
 
 .container p {
@@ -122,20 +113,6 @@ form {
     font-weight: 600;
 }
 
-.social-icons {
-    display: flex;
-    justify-content: center;
-}
-
-.social-icons a {
-    display: inline-flex;
-    padding: 10px;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    font-size: 24px;
-    color: #333;
-    margin: 0 8px;
-}
 
 .toggle-box {
     position: absolute;
