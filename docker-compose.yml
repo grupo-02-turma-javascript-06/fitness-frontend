@@ -30,4 +30,4 @@ networks:
   app-network:
     name: ${NETWORK_NAME:-network-fitness}
     driver: bridge
-    external: true
+    external: ${NETWORK_EXTERNAL:-false}

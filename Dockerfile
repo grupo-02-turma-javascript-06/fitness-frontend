@@ -5,10 +5,8 @@ RUN mkdir -p /home/node/app
 WORKDIR /home/node/app
 
 COPY --chown=node:node package.json yarn.lock* ./
-RUN yarn install
+RUN yarn install --frozen-lockfile
 
 COPY --chown=node:node . .
-
-RUN yarn
 
 CMD ["yarn", "dev", "--host", "0.0.0.0"]
