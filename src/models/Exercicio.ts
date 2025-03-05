@@ -7,6 +7,6 @@ export default interface Exercicio{
     carga:	number;
     repeticao:	number;
     tempo:	string;
-    categoria: Categoria | null;
     foto: string;
+    categoria: Categoria | null;
 }
