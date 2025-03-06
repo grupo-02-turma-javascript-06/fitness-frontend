@@ -247,7 +247,7 @@ function FormExercicio() {
 						</select>
 					</div>
 					<div className="flex justify-center items-center gap-10">
-						<button
+						<button onClick={retornar}
 							className="rounded-lg disabled:bg-slate-200 hover:border-3 bg-[#FD6101] hover:bg-[#B63700]
                                     text-white font-bold w-1/2 mx-auto py-2 flex justify-center uppercase">
 							Cancelar
@@ -257,7 +257,6 @@ function FormExercicio() {
 							className="rounded-lg disabled:bg-slate-200 border-3 border-[#FD6101] hover:bg-[#FD6101]
                                     text-[#FD6101] hover:text-white font-bold w-1/2 mx-auto py-2 flex justify-center uppercase"
 							disabled={carregandoCategoria}>
-							Salvar
 							{isLoading ? (
 								<RotatingLines
 									strokeColor="white"
