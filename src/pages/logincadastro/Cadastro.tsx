@@ -4,7 +4,7 @@ import './LoginCadastroForm.css';
 import Usuario from '../../models/Usuario';
 import { cadastrarUsuario } from '../../services/Service';
 import { FacebookLogo, GithubLogo, GoogleLogo, LinkedinLogo, Eye, EyeSlash } from '@phosphor-icons/react';
-import { ToastAlerta } from '../../utils/ToasstAlerta';
+import { ToastAlerta } from '../../utils/ToastAlerta';
 import { RotatingLines } from 'react-loader-spinner';
 
 const Cadastro: React.FC = () => {
