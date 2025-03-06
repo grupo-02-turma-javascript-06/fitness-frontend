@@ -36,8 +36,7 @@ const Cadastro: React.FC = () => {
     }, [usuario]);
 
     function retornar() {
-        navigate('/login', { replace: true });
-        window.location.reload();
+        navigate('/login');
     }
 
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
@@ -75,6 +74,10 @@ const Cadastro: React.FC = () => {
             try {
                 await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario);
                 ToastAlerta('Usuário cadastrado com sucesso!', 'sucesso');
+                setTimeout(() => {
+                    navigate('/login');
+                    window.location.reload();
+                }, 2000); // Aguarda 2 segundos antes de redirecionar e recarregar a página
             } catch (error) {
                 ToastAlerta('Erro ao cadastrar o usuário!', 'erro');
             }
@@ -203,8 +206,7 @@ const Cadastro: React.FC = () => {
                 </div>
                 <button
                     type="submit"
-                    className="w-full h-12 bg-[#FD6101] rounded-2xl shadow-md text-white font-semibold text-base cursor-pointer flex items-center justify-center"
-                    onClick={retornar}>
+                    className="w-full h-12 bg-[#FD6101] rounded-2xl shadow-md text-white font-semibold text-base cursor-pointer flex items-center justify-center">
                     {isLoading ? <RotatingLines
                         strokeColor="white"
                         strokeWidth="5"
