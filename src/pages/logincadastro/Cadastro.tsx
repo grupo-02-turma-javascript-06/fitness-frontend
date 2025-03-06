@@ -63,9 +63,9 @@ const Cadastro: React.FC = () => {
     }
 
     const handleNumericInput = (e: ChangeEvent<HTMLInputElement>, field: keyof Usuario) => {
-        let value = e.target.value.replace(/[^0-9]/g, '');
+        let value = e.target.value.replace(/[^0-9,.]/g, ''); // Permitir números, vírgulas e pontos
 
-        value = value.replace(',', '.');
+        value = value.replace(',', '.'); // Substituir vírgulas por pontos
 
         if (field === 'altura' && value.length > 2) {
             value = value.slice(0, value.length - 2) + '.' + value.slice(value.length - 2);

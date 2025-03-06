@@ -13,7 +13,7 @@ const LoginCadastroForm: React.FC = () => {
 
     return (
         <div id='body'>
-            <div className={`container ${isRegisterMode ? 'active' : ''}`}>
+            <div className={`container-cadastro ${isRegisterMode ? 'active' : ''}`}>
                 <div className={`form-box ${isRegisterMode ? '' : 'login'}`}>
                     <Login />
                 </div>
