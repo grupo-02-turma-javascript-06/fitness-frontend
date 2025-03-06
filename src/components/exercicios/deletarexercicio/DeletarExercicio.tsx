@@ -22,7 +22,7 @@ function DeletarExercicio() {
 
 	async function buscarPorId(id: string) {
 		try {
-			await buscar(`/exercicios/detroy/${id}`, setExercicio, {
+			await buscar(`/exercicios/${id}`, setExercicio, {
 				headers: {
 					Authorization: token,
 				},
@@ -51,7 +51,7 @@ function DeletarExercicio() {
 		setIsLoading(true);
 
 		try {
-			await deletar(`/exercicios/detroy/${id}`, {
+			await deletar(`/exercicios/${id}`, {
 				headers: {
 					Authorization: token,
 				},
@@ -72,6 +72,7 @@ function DeletarExercicio() {
 
 	function retornar() {
 		setIsOpen(false);
+		navigate('/exercicios');
 	}
 
 	return (

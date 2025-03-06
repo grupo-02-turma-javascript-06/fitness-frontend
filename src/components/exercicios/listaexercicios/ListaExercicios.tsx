@@ -1,6 +1,6 @@
 import { MagnifyingGlass } from '@phosphor-icons/react';
 import CardExercicios from '../cardexercicios/CardExercicios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import Exercicio from '../../../models/Exercicio';
 import { AuthContext } from '../../../contexts/AuthContext';
@@ -51,13 +51,15 @@ function ListaExercicios() {
 						<p className="text-lg lg:text-[2rem]">Comece agora a mudar de vida!</p>
 						<div className="w-full">
 							<button className="min-w-200px mt-4 border-2 border-[#FD6101] px-8 py-2 text-white">
-								+ Exercicio
+                                <Link to="/exercicios/store">
+                                    + Exercicio
+                                </Link>
 							</button>
 						</div>
 					</div>
 				</div>
 
-				<div className="container flex justify-center md:justify-end md:relative md:z-10 h-full">
+				<div className="container flex justify-center md:justify-end h-full">
 					<img
 						src="https://ik.imagekit.io/q5tv5x3k8/Move2Fit/woman-good-mood-raises-arm-with-muscles-has-strong-body-dressed-gym-outfit-listens-audio-via-modern-headphones-poses-indoor-removebg-preview%201.svg?updatedAt=1741198688950"
 						alt="Mulher Fitness"

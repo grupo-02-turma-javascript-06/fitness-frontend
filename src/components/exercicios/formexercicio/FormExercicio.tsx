@@ -25,7 +25,7 @@ function FormExercicio() {
 
 	async function buscarExercicioPorId(id: string) {
         try {
-            await buscar(`/exercicios/store${id}`, setExercicio, {
+            await buscar(`/exercicios/${id}`, setExercicio, {
                 headers: { Authorization: token }
             })
         } catch (error: any) {
@@ -49,7 +49,7 @@ function FormExercicio() {
 
 	async function buscarCategorias() {
         try {
-            await buscar('/temas', setCategorias, {
+            await buscar('/categorias', setCategorias, {
                 headers: { Authorization: token }
             })
         } catch (error: any) {
@@ -200,7 +200,7 @@ function FormExercicio() {
 							name="carga"
 							required
 							className="rounded-lg p-2 bg-[#D9D9D9] text-[#808080] border-0 focus:ring-0 focus:outline-none"
-							value={exercicio.carga}
+							value={exercicio.carga ?? '-'}
 							onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 						/>
 					</div>
@@ -215,7 +215,7 @@ function FormExercicio() {
 								name="foto"
 								required
 								className="rounded-lg p-2 bg-[#D9D9D9] text-[#808080] border-0 focus:ring-0 focus:outline-none"
-								value={exercicio.repeticao}
+								value={exercicio.repeticao ?? '-'}
 								onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 							/>
 						</div>
@@ -229,7 +229,7 @@ function FormExercicio() {
 								name="tempo"
 								required
 								className="rounded-lg p-2 bg-[#D9D9D9] text-[#808080] border-0 focus:ring-0 focus:outline-none"
-								value={exercicio.tempo}
+								value={exercicio.tempo ?? '-'}
 								onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 							/>
 						</div>
