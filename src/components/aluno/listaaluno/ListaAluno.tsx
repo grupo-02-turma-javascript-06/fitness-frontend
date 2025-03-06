@@ -11,7 +11,7 @@ function ListaAluno() {
             <div className="flex justify-center items-center bg-[#1E2729] flex-col "> 
 
                 <img
-                src="https://ik.imagekit.io/q5tv5x3k8/Move2Fit/Banner.svg?updatedAt=1741281939958"
+                src="https://ik.imagekit.io/q5tv5x3k8/Move2Fit/Banner.svg?updatedAt=1741287556502"
                 alt="Mulher Fitness"
                 className="lg:h-full object-cover"
                 />
