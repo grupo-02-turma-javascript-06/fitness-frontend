@@ -10,19 +10,21 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div className="flex items-center justify-between h-full flex-wrap">
                 <div className="flex items-center">
-                    <img
-                        src="https://ik.imagekit.io/yijg14v4w/fitness-frontend/Logo.svg?updatedAt=1741178306395"
-                        alt="Move2Fit"
-                        className="h-10"
-                    />
+                    <Link to='/home'>
+                        <img
+                            src="https://ik.imagekit.io/yijg14v4w/fitness-frontend/Logo.svg?updatedAt=1741178306395"
+                            alt="Move2Fit"
+                            className="h-10"
+                        />
+                    </Link>
                 </div>
 
                 {/* Menu desktop */}
                 <div className="hidden md:flex items-center space-x-4 sm:space-x-6">
-                    <Link to="" className="text-white hover:text-orange-500 transition-colors">Home</Link>
-                    <Link to="" className="text-white hover:text-orange-500 transition-colors">Sobre</Link>
-                    <Link to="" className="text-white hover:text-orange-500 transition-colors">Exercícios</Link>
-                    <Link to="" className="text-white hover:text-orange-500 transition-colors">Categorias</Link>
+                    <Link to="/home" className="text-white hover:text-orange-500 transition-colors">Home</Link>
+                    <Link to="/sobre" className="text-white hover:text-orange-500 transition-colors">Sobre</Link>
+                    <Link to="/exercicios" className="text-white hover:text-orange-500 transition-colors">Exercícios</Link>
+                    <Link to="/categorias" className="text-white hover:text-orange-500 transition-colors">Categorias</Link>
                     <UserCircle size={40} className="text-gray-300 cursor-pointer hover:text-white flex-shrink-0" />
                 </div>
 
@@ -40,10 +42,10 @@ export default function Navbar() {
         {isOpen && (
         <div className="md:hidden bg-[#1A1D1F] border-t border-gray-800 absolute w-full left-0 top-20">
             <div className="px-4 py-3 space-y-2">
-                <Link to="" className="block px-3 py-2 text-white hover:text-orange-500">Home</Link>
-                <Link to="" className="block px-3 py-2 text-white hover:text-orange-500">Sobre</Link>
-                <Link to="" className="block px-3 py-2 text-white hover:text-orange-500">Exercícios</Link>
-                <Link to="" className="block px-3 py-2 text-white hover:text-orange-500">Categorias</Link>
+                <Link to="/home" className="block px-3 py-2 text-white hover:text-orange-500">Home</Link>
+                <Link to="/sobre" className="block px-3 py-2 text-white hover:text-orange-500">Sobre</Link>
+                <Link to="/exercicios" className="block px-3 py-2 text-white hover:text-orange-500">Exercícios</Link>
+                <Link to="/categorias" className="block px-3 py-2 text-white hover:text-orange-500">Categorias</Link>
             </div>
         </div>
         )}
