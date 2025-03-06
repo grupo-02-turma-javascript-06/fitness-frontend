@@ -1,25 +1,26 @@
 import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { ToastAlerta } from '../../utils/ToastAlerta';
 
 function Perfil() {
 	const navigate = useNavigate();
 
 	const { usuario } = useContext(AuthContext);
 
-	/*useEffect(() => {
+	useEffect(() => {
 		if (usuario.token === '') {
 			ToastAlerta('Você precisa estar logado', 'erro');
-			navigate('/');
+			navigate('/login');
 		}
-	}, [usuario.token]);*/
+	}, [usuario.token]);
 
 	return (
 		<div className="@container	container mx-auto m-2 rounded-2xl overflow-hidden mt-15 max-sm:px-1">
-			<div className="">
+			<div>
 				<img
 					className="w-full h-80 object-cover max-sm:h-40 max-lg:h-50"
-					src="https://s3-alpha-sig.figma.com/img/cca3/5aa4/db4e8ca577b9902074fbd7fe7b8c6cba?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=FZ-rTOuVr1pmolhVXld0jRvBW-HjES-EA6Tc1DSB~pjL~9iaOUGaGCI7uthFV4DQzBFJ3miDPNXE3SaZnFZjJrdLOzkdUskZtpn41lCWP~zI-WAcliPg7Rrij9mdxXPdt0SHUx~2Re6obqfYFX5DfKTYrb1Kr9L1nUpW0jB1V1Viq94bfcubYnojD6SMb~YL-r3y1FgPsgwSP8qtPq~8nEDzlj3v3QFOGuFixQpNQDeITikrYy8yra0b1wiCv2JMFsRkj5ly1BXfDHS7ZBaOmdgCRlYA3p6jvwWJZhkThQzp58oJXhq9VpHCarzXNvXSpYgqtkWkGKy0CQGtETeMOA__"
+					src="public\images\image-orange.jpg"
 					alt="Capa do Perfil"
 				/>
 
