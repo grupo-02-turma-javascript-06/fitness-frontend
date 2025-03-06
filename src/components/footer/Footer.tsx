@@ -19,16 +19,16 @@ export default function Footer() {
           <div className="flex flex-col sm:items-center md:items-start">
             <h3 className="text-white text-lg font-semibold mb-4">About Us</h3>
             <ul className="space-y-2">
-              <li><Link to="" className="hover:text-[#FD6101]">Equipe</Link></li>
-              <li><Link to="" className="hover:text-[#FD6101]">Sobre nós</Link></li>
+              <li><Link to="/equipe" className="hover:text-[#FD6101]">Equipe</Link></li>
+              <li><Link to="/sobre" className="hover:text-[#FD6101]">Sobre nós</Link></li>
             </ul>
           </div>
 
           <div className="flex flex-col sm:items-center md:items-start">
             <h3 className="text-white text-lg font-semibold mb-4">Veja agora</h3>
             <ul className="space-y-2">
-              <li><Link to="" className="hover:text-[#FD6101]">Exercícios</Link></li>
-              <li><Link to="" className="hover:text-[#FD6101]">Categorias</Link></li>
+              <li><Link to="/exercicios" className="hover:text-[#FD6101]">Exercícios</Link></li>
+              <li><Link to="/categorias" className="hover:text-[#FD6101]">Categorias</Link></li>
             </ul>
           </div>
 
