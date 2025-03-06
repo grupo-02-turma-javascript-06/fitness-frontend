@@ -1,4 +1,4 @@
-import { Heart, PencilSimpleLine, Trash } from "@phosphor-icons/react"
+import { PencilSimpleLine, Plus, Trash } from "@phosphor-icons/react"
 
 
 
@@ -36,7 +36,7 @@ function CardExercicios(){
                         <div className="flex justify-end gap-6 text-[#1E2729]">
                             <PencilSimpleLine size={25} className="transition-transform duration-300 hover:scale-120 hover:text-[#B63700]"/>
                             <Trash size={25} className="transition-transform duration-300 hover:scale-120 hover:text-[#B63700]"/>
-                            <Heart size={25} className="transition-transform duration-300 hover:scale-120 hover:text-[#B63700]"/>
+                            <Plus size={25} className="transition-transform duration-300 hover:scale-120 hover:text-[#B63700]"/>
                         </div>
                     </div>
                 </div>

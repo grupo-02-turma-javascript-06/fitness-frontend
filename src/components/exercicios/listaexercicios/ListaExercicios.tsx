@@ -30,31 +30,28 @@ function ListaExercicios() {
             </div>
 
 
-            <div className="flex justify-center items-center h-20 text-lg">
-                <div className="container flex justify-between gap-5">
-                    <div className="flex flex-col gap-2 w-[20vw]">
-                        <select id="category" value={""} className="drop-shadow-lg rounded-md px-4 py-2 bg-white text-[#6A6F75] border-0 focus:ring-0 focus:outline-none">
-                            <option value="" disabled className="px-4">Categorias</option>
-                            {/* {categories.map((cat) => (
-                            <option key={cat} value={cat}>
-                                {cat}
-                            </option>
-                            ))} */}
+            <div className="flex flex-col justify-center items-center h-20 text-lg mx-5 md:mx-0">
+                <div className="container flex flex-col md:flex-row justify-between gap-5 mt-15 md:mt-0">
+                    <div className="flex flex-col gap-2 md:w-[20vw]">
+                        <select name="categoria" id="categoria" className='bg-[#D9D9D9] p-2  rounded-lg border-0 focus:ring-0 focus:outline-none text-[#808080]'>
+                            <option value="" selected disabled>Categorias</option>
                         </select>
-                        {/* {category && <p className="text-white">Selecionado: {category}</p>} */}
+                        
                     </div>
 
-                    <div className="flex flex-col gap-2 w-[80vw]">
+                    <div className="flex flex-col gap-2 md:w-[80vw] ">
                         <form className="flex justify-center items-center mx-auto w-full gap-4 ">
                         
                             <label htmlFor="search" className="sr-only">
                                 Search
                             </label>
-                            <div className="bg-white py-2 px-4 w-full rounded-lg drop-shadow-lg">
+                            <div className="flex gap-4 items-center bg-white w-full rounded-lg drop-shadow-lg">
+                                <div className="flex justify-center items-center bg-[#dbdada] w-15 h-11 rounded-l-lg"><MagnifyingGlass size={25} className="text-white" /></div>
+                                
                                 <input
                                 type="text"
                                 id="simple-search"
-                                className="w-full border-0 focus:ring-0 focus:outline-none"
+                                className="w-full border-0 focus:ring-0 focus:outline-none py-2 px-4"
                                 placeholder="Pesquisar Exercício"
                                 />
                             </div>
@@ -66,7 +63,7 @@ function ListaExercicios() {
                 </div>
             </div>
             
-            <div className="flex justify-center w-full my-4">
+            <div className="flex justify-center w-full my-4 mt-15 md:mt-0">
                 <div className="container flex flex-col mx-2"> 
                     <div className='container mx-auto my-4 
                         grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'
