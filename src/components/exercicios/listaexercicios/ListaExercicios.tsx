@@ -1,7 +1,47 @@
 import { MagnifyingGlass } from '@phosphor-icons/react';
 import CardExercicios from '../cardexercicios/CardExercicios';
+import { useNavigate } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import Exercicio from '../../../models/Exercicio';
+import { AuthContext } from '../../../contexts/AuthContext';
+import { buscar } from '../../../services/Service';
+import { ToastAlerta } from '../../../utils/ToasstAlerta';
+import { DNA } from 'react-loader-spinner';
 
 function ListaExercicios() {
+	const navigate = useNavigate();
+
+	const [exercicios, setExercicios] = useState<Exercicio[]>([]);
+
+	const { usuario, handleLogout } = useContext(AuthContext);
+
+	const token = usuario.token;
+
+	async function buscarExercicios() {
+		try {
+			await buscar('/exercicios', setExercicios, {
+				headers: {
+					Authotization: token,
+				},
+			});
+		} catch (error: any) {
+			if (error.toString().includes('403')) {
+				handleLogout();
+			}
+		}
+	}
+
+	useEffect(() => {
+		if (token === '') {
+			ToastAlerta('Você precisa estar logado!', 'erro');
+			navigate('/');
+		}
+	}, [token]);
+
+	useEffect(() => {
+		buscarExercicios();
+	}, [exercicios.length]);
+
 	return (
 		<>
 			<div className="flex justify-center items-center bg-[#1E2729] flex-col md:h-80">
@@ -61,12 +101,27 @@ function ListaExercicios() {
 				</div>
 			</div>
 
+			{exercicios.length === 0 && (
+				<DNA
+					visible={true}
+					height="200"
+					width="200"
+					ariaLabel="dna-loading"
+					wrapperStyle={{}}
+					wrapperClass="dna-wrapper mx-auto"
+				/>
+			)}
 			<div className="flex justify-center w-full my-4 mt-15 md:mt-0">
 				<div className="container flex flex-col mx-2">
+					{exercicios.length === 0 && (
+						<span className="text-3xl text-center my-8">Nenhum exercício foi encontrado</span>
+					)}
 					<div
 						className="container mx-auto my-4 
                         grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-						<CardExercicios />
+                            {exercicios.map((exercicio) => (
+						        <CardExercicios key={exercicio.id} exercicio={exercicio} />
+                            ))}
 					</div>
 				</div>
 			</div>
