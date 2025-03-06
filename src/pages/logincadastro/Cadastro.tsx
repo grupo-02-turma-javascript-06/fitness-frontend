@@ -9,9 +9,6 @@ import { RotatingLines } from 'react-loader-spinner';
 
 const Cadastro: React.FC = () => {
 
-    const togglePasswordVisibility = () => {
-        setShowPassword(!showPassword);
-    };
 
     const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -26,6 +23,21 @@ const Cadastro: React.FC = () => {
         altura: 0,
         imc: 0,
     });
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+
+    useEffect(() => {
+        let timer: NodeJS.Timeout;
+        if (showPassword) {
+            timer = setTimeout(() => {
+                setShowPassword(false);
+            }, 2000);
+        }
+        return () => clearTimeout(timer);
+    }, [showPassword]);
+
 
     const navigate = useNavigate();
 
@@ -57,6 +69,11 @@ const Cadastro: React.FC = () => {
 
         if (field === 'altura' && value.length > 2) {
             value = value.slice(0, value.length - 2) + '.' + value.slice(value.length - 2);
+            if (parseFloat(value) > 3) {
+                value = '3.00';
+            }
+        } else if (field === 'peso' && value.length > 2) {
+            value = value.slice(0, value.length - 2) + '.' + value.slice(value.length - 2);
         }
 
         setUsuario((prev) => ({
@@ -77,7 +94,7 @@ const Cadastro: React.FC = () => {
                 setTimeout(() => {
                     navigate('/login');
                     window.location.reload();
-                }, 2000); // Aguarda 2 segundos antes de redirecionar e recarregar a página
+                }, 100); // Aguarda 2 segundos antes de redirecionar e recarregar a página
             } catch (error) {
                 ToastAlerta('Erro ao cadastrar o usuário!', 'erro');
             }
