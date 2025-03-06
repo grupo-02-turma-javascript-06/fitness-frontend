@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './LoginCadastroForm.css';
 import Usuario from '../../models/Usuario';
 import { cadastrarUsuario } from '../../services/Service';
@@ -9,13 +9,11 @@ import { RotatingLines } from 'react-loader-spinner';
 
 const Cadastro: React.FC = () => {
 
-    const [showPassword, setShowPassword] = useState(false);
-
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
 
-    const navigate = useNavigate();
+    const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [confirmaSenha, setConfirmaSenha] = useState<string>("");
     const [usuario, setUsuario] = useState<Usuario>({
@@ -29,6 +27,8 @@ const Cadastro: React.FC = () => {
         imc: 0,
     });
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         if (usuario.id !== 0) {
             retornar();
@@ -36,12 +36,8 @@ const Cadastro: React.FC = () => {
     }, [usuario]);
 
     function retornar() {
-        if (usuario.id !== 0) {
-            navigate('/login', { replace: true });
-            window.location.reload();
-        } else {
-            navigate('/login');
-        }
+        navigate('/login', { replace: true });
+        window.location.reload();
     }
 
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
@@ -54,6 +50,21 @@ const Cadastro: React.FC = () => {
     function handleConfirmarSenha(e: ChangeEvent<HTMLInputElement>) {
         setConfirmaSenha(e.target.value);
     }
+
+    const handleNumericInput = (e: ChangeEvent<HTMLInputElement>, field: keyof Usuario) => {
+        let value = e.target.value.replace(/[^0-9]/g, '');
+
+        value = value.replace(',', '.');
+
+        if (field === 'altura' && value.length > 2) {
+            value = value.slice(0, value.length - 2) + '.' + value.slice(value.length - 2);
+        }
+
+        setUsuario((prev) => ({
+            ...prev,
+            [field]: parseFloat(value),
+        }));
+    };
 
     async function cadastrarNovoUsuario(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -170,10 +181,10 @@ const Cadastro: React.FC = () => {
                             id='peso'
                             name='peso'
                             type="number"
-                            placeholder="Peso"
-                            className="w-full py-3 pl-5 pr-12 bg-gray-200 rounded-2xl text-gray-700 font-medium text-base outline-none placeholder-gray-500"
-                            value={usuario.peso}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                            placeholder="Peso (kg)"
+                            className="appearance-none peer w-full py-3 pl-5 pr-5 bg-gray-200 rounded-2xl text-gray-700 font-medium text-base outline-none placeholder-gray-500"
+                            value={usuario.peso ? `${usuario.peso}` : ''}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => handleNumericInput(e, 'peso')}
                         />
                         <i className="bx bxs-weight absolute right-5 top-1/2 transform -translate-y-1/2 text-2xl text-gray-700"></i>
                     </div>
@@ -182,10 +193,10 @@ const Cadastro: React.FC = () => {
                             id='altura'
                             name='altura'
                             type="number"
-                            placeholder="Altura"
-                            className="w-full py-3 pl-5 pr-12 bg-gray-200 rounded-2xl text-gray-700 font-medium text-base outline-none placeholder-gray-500"
-                            value={usuario.altura}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                            placeholder="Altura (m)"
+                            className="appearance-none peer w-full py-3 pl-5 pr-5 bg-gray-200 rounded-2xl text-gray-700 font-medium text-base outline-none placeholder-gray-500"
+                            value={usuario.altura ? `${usuario.altura}` : ''}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => handleNumericInput(e, 'altura')}
                         />
                         <i className="bx bxs-ruler absolute right-5 top-1/2 transform -translate-y-1/2 text-2xl text-gray-700"></i>
                     </div>
