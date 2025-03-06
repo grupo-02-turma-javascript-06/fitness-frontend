@@ -1,4 +1,5 @@
 import { Pencil, Trash } from "@phosphor-icons/react"
+import { Link } from "react-router-dom"
 
 function CardCategorias() {
     return (
@@ -17,8 +18,12 @@ function CardCategorias() {
                     </div>
 
                     <div className="flex justify-end gap-3">
+                        <Link to={""}>
                         <Trash className="text-gray-400 hover:text-[#FD6101] cursor-pointer" size={20} />
+                        </Link>
+                        <Link to={""}>
                         <Pencil className="text-gray-400 hover:text-[#1E2729] cursor-pointer" size={20} />
+                        </Link>
                     </div>
                 </div>
 
