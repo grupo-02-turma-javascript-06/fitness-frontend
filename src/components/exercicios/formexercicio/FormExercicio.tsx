@@ -100,9 +100,9 @@ function FormExercicio() {
 
         if (id !== undefined) {
             try {
-                await atualizar(`/exercicios/${id}`, exercicio, setExercicio, {
+                await atualizar(`/exercicios`, exercicio, setExercicio, {
                     headers: {
-                        Authorization: token,
+                        Authorization: token
                     },
                 });
 
@@ -198,9 +198,8 @@ function FormExercicio() {
 							type="text"
 							placeholder="Digite o peso necessário"
 							name="carga"
-							required
 							className="rounded-lg p-2 bg-[#D9D9D9] text-[#808080] border-0 focus:ring-0 focus:outline-none"
-							value={exercicio.carga ?? '-'}
+							value={exercicio.carga ?? "0"}
 							onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 						/>
 					</div>
@@ -212,10 +211,9 @@ function FormExercicio() {
 							<input
 								type="text"
 								placeholder="insira repetições"
-								name="foto"
-								required
+								name="repeticao"
 								className="rounded-lg p-2 bg-[#D9D9D9] text-[#808080] border-0 focus:ring-0 focus:outline-none"
-								value={exercicio.repeticao ?? '-'}
+								value={exercicio.repeticao ?? "0"}
 								onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 							/>
 						</div>
@@ -227,9 +225,8 @@ function FormExercicio() {
 								type="text"
 								placeholder="insira o tempo"
 								name="tempo"
-								required
 								className="rounded-lg p-2 bg-[#D9D9D9] text-[#808080] border-0 focus:ring-0 focus:outline-none"
-								value={exercicio.tempo ?? '-'}
+								value={exercicio.tempo ?? "0"}
 								onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 							/>
 						</div>
