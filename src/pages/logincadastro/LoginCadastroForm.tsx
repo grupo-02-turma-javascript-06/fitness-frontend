@@ -11,36 +11,36 @@ const LoginCadastroForm: React.FC = () => {
 		setIsRegisterMode(!isRegisterMode);
 	};
 
-    return (
-        <div id='body'>
-            <div className={`container-cadastro ${isRegisterMode ? 'active' : ''}`}>
-                <div className={`form-box ${isRegisterMode ? '' : 'login'}`}>
-                    <Login />
-                </div>
+	return (
+		<div id="body">
+			<div className={`container-cadastro ${isRegisterMode ? 'active' : ''}`}>
+				<div className={`form-box ${isRegisterMode ? '' : 'login'}`}>
+					<Login />
+				</div>
 
-                <div className={`form-box register ${isRegisterMode ? 'register' : ''}`}>
-                    <Cadastro />
-                </div>
+				<div className={`form-box register ${isRegisterMode ? 'register' : ''}`}>
+					<Cadastro />
+				</div>
 
-                <div className="toggle-box">
-                    <div className="toggle-panel toggle-left">
-                        <h1 className="text-3xl font-semibold">Bem Vinde de volta!</h1>
-                        <p className="mb-5 text-sm">Não tem uma conta?</p>
-                        <button onClick={handleToggle} className="btn register-btn">
-                            <Link to="/cadastro">Cadastre-se</Link>
-                        </button>
-                    </div>
-                    <div className="toggle-panel toggle-right">
-                        <h1 className="text-3xl font-semibold">Olá, Seja Bem Vinde!</h1>
-                        <p className="mb-5 text-sm">Já tem uma conta?</p>
-                        <button onClick={handleToggle} className="btn login-btn">
-                            <Link to="/login">Login</Link>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+				<div className="toggle-box">
+					<div className="toggle-panel toggle-left">
+						<h1 className="text-3xl font-semibold">Bem Vinde de volta!</h1>
+						<p className="mb-5 text-sm">Não tem uma conta?</p>
+						<button onClick={handleToggle} className="btn register-btn">
+							<Link to="/cadastro">Cadastre-se</Link>
+						</button>
+					</div>
+					<div className="toggle-panel toggle-right">
+						<h1 className="text-3xl font-semibold">Olá, Seja Bem Vinde!</h1>
+						<p className="mb-5 text-sm">Já tem uma conta?</p>
+						<button onClick={handleToggle} className="btn login-btn">
+							<Link to="/login">Login</Link>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default LoginCadastroForm;

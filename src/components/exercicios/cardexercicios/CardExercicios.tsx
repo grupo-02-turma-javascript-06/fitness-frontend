@@ -3,19 +3,16 @@ import Exercicio from '../../../models/Exercicio';
 import { Link } from 'react-router-dom';
 
 interface CardExerciciosProps {
-	exercicio: Exercicio
+	exercicio: Exercicio;
 }
 
-function CardExercicios({exercicio}: CardExerciciosProps) {
+function CardExercicios({ exercicio }: CardExerciciosProps) {
 	return (
 		<>
 			<div className="drop-shadow-lg flex flex-col rounded-2xl overflow-hidden justify-between bg-white text-[#1E2729]">
 				<div>
 					<div className="flex w-full  items-center gap-4">
-						<img
-							src={exercicio.foto}
-							alt={exercicio.nome}
-						/>
+						<img src={exercicio.foto} alt={exercicio.nome} />
 					</div>
 					<div className="flex flex-col py-6 gap-6 px-8">
 						<div className="flex flex-col gap-6">
@@ -45,10 +42,7 @@ function CardExercicios({exercicio}: CardExerciciosProps) {
 							</div>
 							<p>{exercicio.descricao}</p>
 							<div className="flex gap-4">
-								<img
-									src={exercicio.categoria?.icone}
-									alt={exercicio.categoria?.nome}
-								/>
+								<img src={exercicio.categoria?.icone} alt={exercicio.categoria?.nome} />
 								<p>{exercicio.categoria?.nome}</p>
 							</div>
 						</div>
@@ -59,7 +53,7 @@ function CardExercicios({exercicio}: CardExerciciosProps) {
 									className="transition-transform duration-300 hover:scale-120 hover:text-[#B63700]"
 								/>
 							</Link>
-							<Link to= {`/exercicios/detroy/${exercicio.id}`}>
+							<Link to={`/exercicios/detroy/${exercicio.id}`}>
 								<Trash
 									size={25}
 									className="transition-transform duration-300 hover:scale-120 hover:text-[#B63700]"
@@ -71,8 +65,6 @@ function CardExercicios({exercicio}: CardExerciciosProps) {
 									className="transition-transform duration-300 hover:scale-120 hover:text-[#B63700]"
 								/>
 							</Link>
-							
-							
 						</div>
 					</div>
 				</div>

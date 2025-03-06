@@ -8,36 +8,33 @@ import { ToastAlerta } from '../../utils/ToasstAlerta';
 import { RotatingLines } from 'react-loader-spinner';
 
 const Cadastro: React.FC = () => {
+	const [showPassword, setShowPassword] = useState(false);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [confirmaSenha, setConfirmaSenha] = useState<string>('');
+	const [usuario, setUsuario] = useState<Usuario>({
+		id: 0,
+		nome: '',
+		usuario: '',
+		senha: '',
+		foto: '',
+		peso: 0,
+		altura: 0,
+		imc: 0,
+	});
 
+	const togglePasswordVisibility = () => {
+		setShowPassword(!showPassword);
+	};
 
-    const [showPassword, setShowPassword] = useState(false);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [confirmaSenha, setConfirmaSenha] = useState<string>("");
-    const [usuario, setUsuario] = useState<Usuario>({
-        id: 0,
-        nome: '',
-        usuario: '',
-        senha: '',
-        foto: '',
-        peso: 0,
-        altura: 0,
-        imc: 0,
-    });
-
-    const togglePasswordVisibility = () => {
-        setShowPassword(!showPassword);
-    };
-
-    useEffect(() => {
-        let timer: NodeJS.Timeout;
-        if (showPassword) {
-            timer = setTimeout(() => {
-                setShowPassword(false);
-            }, 2000);
-        }
-        return () => clearTimeout(timer);
-    }, [showPassword]);
-
+	useEffect(() => {
+		let timer: NodeJS.Timeout;
+		if (showPassword) {
+			timer = setTimeout(() => {
+				setShowPassword(false);
+			}, 2000);
+		}
+		return () => clearTimeout(timer);
+	}, [showPassword]);
 
 	const navigate = useNavigate();
 
@@ -62,19 +59,19 @@ const Cadastro: React.FC = () => {
 		setConfirmaSenha(e.target.value);
 	}
 
-    const handleNumericInput = (e: ChangeEvent<HTMLInputElement>, field: keyof Usuario) => {
-        let value = e.target.value.replace(/[^0-9,.]/g, ''); // Permitir números, vírgulas e pontos
+	const handleNumericInput = (e: ChangeEvent<HTMLInputElement>, field: keyof Usuario) => {
+		let value = e.target.value.replace(/[^0-9,.]/g, ''); // Permitir números, vírgulas e pontos
 
-        value = value.replace(',', '.'); // Substituir vírgulas por pontos
+		value = value.replace(',', '.'); // Substituir vírgulas por pontos
 
-        if (field === 'altura' && value.length > 2) {
-            value = value.slice(0, value.length - 2) + '.' + value.slice(value.length - 2);
-            if (parseFloat(value) > 3) {
-                value = '3.00';
-            }
-        } else if (field === 'peso' && value.length > 2) {
-            value = value.slice(0, value.length - 2) + '.' + value.slice(value.length - 2);
-        }
+		if (field === 'altura' && value.length > 2) {
+			value = value.slice(0, value.length - 2) + '.' + value.slice(value.length - 2);
+			if (parseFloat(value) > 3) {
+				value = '3.00';
+			}
+		} else if (field === 'peso' && value.length > 2) {
+			value = value.slice(0, value.length - 2) + '.' + value.slice(value.length - 2);
+		}
 
 		setUsuario((prev) => ({
 			...prev,
@@ -88,21 +85,21 @@ const Cadastro: React.FC = () => {
 		if (confirmaSenha === usuario.senha && usuario.senha.length >= 8) {
 			setIsLoading(true);
 
-            try {
-                await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario);
-                ToastAlerta('Usuário cadastrado com sucesso!', 'sucesso');
-                setTimeout(() => {
-                    navigate('/login');
-                    window.location.reload();
-                }, 100); // Aguarda 2 segundos antes de redirecionar e recarregar a página
-            } catch (error) {
-                ToastAlerta('Erro ao cadastrar o usuário!', 'erro');
-            }
-        } else {
-            ToastAlerta('Dados estão inconsistentes. Verifique as informações do cadastro', 'erro');
-            setUsuario({ ...usuario, senha: '' });
-            setConfirmaSenha('');
-        }
+			try {
+				await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario);
+				ToastAlerta('Usuário cadastrado com sucesso!', 'sucesso');
+				setTimeout(() => {
+					navigate('/login');
+					window.location.reload();
+				}, 100); // Aguarda 2 segundos antes de redirecionar e recarregar a página
+			} catch (error) {
+				ToastAlerta('Erro ao cadastrar o usuário!', 'erro');
+			}
+		} else {
+			ToastAlerta('Dados estão inconsistentes. Verifique as informações do cadastro', 'erro');
+			setUsuario({ ...usuario, senha: '' });
+			setConfirmaSenha('');
+		}
 
 		setIsLoading(false);
 	}
