@@ -16,35 +16,35 @@ import FormExercicio from './components/exercicios/formexercicio/FormExercicio';
 import DeletarExercicio from './components/exercicios/deletarexercicio/DeletarExercicio';
 
 function App() {
-    return (
-        <>
-            <AuthProvider>
-                <ToastContainer />
-                <BrowserRouter>
-                    <Navbar />
-                    <div className="min-h-[80vh]">
-                        <Routes>
-                            <Route path="/" element={<LoginCadastroForm />} />
-                            <Route path="/login" element={<LoginCadastroForm />} />
-                            <Route path="/cadastro" element={<LoginCadastroForm />} />
-                            <Route path='/home' element={<Home />} />
-                            <Route path='/sobre' element={<Sobre />} />
-                            <Route path='/equipe' element={<Equipe />} />
-                            <Route path='/categorias' element={<ListaCategorias />} />
-                            <Route path='/categorias/store' element={<FormCategoria />} />
-                            <Route path='/categorias/edit/:id' element={<FormCategoria />} />
-                            <Route path='/categoria/detroy/:id' element={<DeletarCategoria />} />
-                            <Route path='/exercicios' element={<ListaExercicios />} />
-                            <Route path='/exercicios/store' element={<FormExercicio />} />
-                            <Route path='/exercicios/edit/:id' element={<FormExercicio />} />
-                            <Route path='/exercicios/detroy/:id' element={<DeletarExercicio />} />
-                        </Routes>
-                    </div>
-                    <Footer />
-                </BrowserRouter>
-            </AuthProvider>
-        </>
-    );
+	return (
+		<>
+			<AuthProvider>
+				<ToastContainer />
+				<BrowserRouter>
+					<Navbar />
+					<div className="min-h-[80vh]">
+						<Routes>
+							<Route path="/" element={<LoginCadastroForm />} />
+							<Route path="/login" element={<LoginCadastroForm />} />
+							<Route path="/cadastro" element={<LoginCadastroForm />} />
+							<Route path="/home" element={<Home />} />
+							<Route path="/sobre" element={<Sobre />} />
+							<Route path="/equipe" element={<Equipe />} />
+							<Route path="/categorias" element={<ListaCategorias />} />
+							<Route path="/categorias/store" element={<FormCategoria />} />
+							<Route path="/categorias/edit/:id" element={<FormCategoria />} />
+							<Route path="/categoria/detroy/:id" element={<DeletarCategoria />} />
+							<Route path="/exercicios" element={<ListaExercicios />} />
+							<Route path="/exercicios/store" element={<FormExercicio />} />
+							<Route path="/exercicios/edit/:id" element={<FormExercicio />} />
+							<Route path="/exercicios/detroy/:id" element={<DeletarExercicio />} />
+						</Routes>
+					</div>
+					<Footer />
+				</BrowserRouter>
+			</AuthProvider>
+		</>
+	);
 }
 
 export default App;
