@@ -21,7 +21,7 @@ function ListaExercicios() {
 		try {
 			await buscar('/exercicios', setExercicios, {
 				headers: {
-					Authotization: token,
+					Authorization: token,
 				},
 			});
 		} catch (error: any) {
@@ -119,9 +119,9 @@ function ListaExercicios() {
 					<div
 						className="container mx-auto my-4 
                         grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {exercicios.map((exercicio) => (
-						        <CardExercicios key={exercicio.id} exercicio={exercicio} />
-                            ))}
+						{exercicios.map((exercicio) => (
+							<CardExercicios key={exercicio.id} exercicio={exercicio} />
+						))}
 					</div>
 				</div>
 			</div>
