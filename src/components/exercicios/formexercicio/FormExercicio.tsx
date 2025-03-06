@@ -1,9 +1,153 @@
+import { ChangeEvent, useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import Categoria from "../../../models/Categoria";
+import Exercicio from "../../../models/Exercicio";
+import { AuthContext } from "../../../contexts/AuthContext";
+import { atualizar, buscar, cadastrar } from "../../../services/Service";
+import { ToastAlerta } from "../../../utils/ToasstAlerta";
+import { RotatingLines } from "react-loader-spinner";
+
+
 function FormExercicio() {
+
+	const navigate = useNavigate();
+
+    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [categorias, setCategorias] = useState<Categoria[]>([])
+
+	const [categoria, setCategoria] = useState<Categoria>({ id: 0, nome: '', descricao:'', icone:'' })
+    const [exercicio, setExercicio] = useState<Exercicio>({} as Exercicio)
+
+	const { id } = useParams<{ id: string }>()
+
+    const { usuario, handleLogout } = useContext(AuthContext)
+    const token = usuario.token
+
+	async function buscarExercicioPorId(id: string) {
+        try {
+            await buscar(`/exercicios/store${id}`, setExercicio, {
+                headers: { Authorization: token }
+            })
+        } catch (error: any) {
+            if (error.toString().includes('401')) {
+                handleLogout()
+            }
+        }
+    }
+
+	async function buscarCategoriaPorId(id: string) {
+        try {
+            await buscar(`/categorias/${id}`, setCategoria, {
+                headers: { Authorization: token }
+            })
+        } catch (error: any) {
+            if (error.toString().includes('401')) {
+                handleLogout()
+            }
+        }
+    }
+
+	async function buscarCategorias() {
+        try {
+            await buscar('/temas', setCategorias, {
+                headers: { Authorization: token }
+            })
+        } catch (error: any) {
+            if (error.toString().includes('401')) {
+                handleLogout()
+            }
+        }
+    }
+
+	useEffect(() => {
+        if (token === '') {
+            ToastAlerta("Você precisa estar logado!", "erro")
+
+            navigate('/');
+        }
+    }, [token])
+
+    useEffect(() => {
+        buscarCategorias()
+
+        if (id !== undefined) {
+            buscarExercicioPorId(id)
+        }
+    }, [id])
+
+	useEffect(() => {
+        setExercicio({
+            ...exercicio,
+            categoria: categoria,
+        })
+    }, [categoria])
+
+	function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
+        setExercicio({
+            ...exercicio,
+            [e.target.name]: e.target.value,
+            categoria: categoria,
+        });
+    }
+
+    function retornar() {
+        navigate('/exercicios');
+    }
+
+	async function gerarNovoExercicio(e: ChangeEvent<HTMLFormElement>) {
+        e.preventDefault()
+        setIsLoading(true)
+
+        if (id !== undefined) {
+            try {
+                await atualizar(`/exercicios/${id}`, exercicio, setExercicio, {
+                    headers: {
+                        Authorization: token,
+                    },
+                });
+
+                ToastAlerta("O exercício foi atualizado com sucesso", "sucesso")
+
+            } catch (error: any) {
+                if (error.toString().includes('401')) {
+                    handleLogout()
+                } else {
+                    ToastAlerta("Erro ao atualizar exercício!", "erro");
+                }
+            }
+
+        } else {
+            try {
+                await cadastrar(`/exercicios`, exercicio, setExercicio, {
+                    headers: {
+                        Authorization: token,
+                    },
+                })
+
+                ToastAlerta("O exercicio foi cadastrado com sucesso", "sucesso");
+
+            } catch (error: any) {
+                if (error.toString().includes('401')) {
+                    handleLogout()
+                } else {
+                    ToastAlerta("Erro ao cadastrar exercicio!", "erro");
+                }
+            }
+        }
+
+        setIsLoading(false)
+        retornar()
+    }
+
+	const carregandoCategoria = categoria.nome === '';
+
 	return (
 		<>
 			<div className="container flex flex-col mx-auto items-center my-8">
-				<h1 className="text-4xl text-center my-8">Cadastrar/Editar Exercício</h1>
-				<form className="flex flex-col w-1/2 gap-4 ">
+				<h1 className="text-4xl text-center my-8">
+					{id !== undefined ? 'Editar Exercício' : 'Cadastrar Exercício'}
+				</h1>
+				<form className="flex flex-col w-1/2 gap-4 " onSubmit={gerarNovoExercicio}>
 					<div className="flex flex-col gap-2">
 						<label htmlFor="nome" className="text-[#1E2729]">
 							Nome
@@ -14,8 +158,8 @@ function FormExercicio() {
 							name="nome"
 							required
 							className="rounded-lg p-2 bg-[#D9D9D9] text-[#808080] border-0 focus:ring-0 focus:outline-none"
-							value=""
-							// onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+							value={exercicio.nome}
+							onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 						/>
 					</div>
 					<div className="flex flex-col gap-2">
@@ -28,8 +172,8 @@ function FormExercicio() {
 							name="descricao"
 							required
 							className="rounded-lg p-2 bg-[#D9D9D9] text-[#808080] border-0 focus:ring-0 focus:outline-none"
-							value=""
-							// onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+							value={exercicio.descricao}
+							onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 						/>
 					</div>
 					<div className="flex flex-col gap-2">
@@ -42,8 +186,8 @@ function FormExercicio() {
 							name="foto"
 							required
 							className="rounded-lg p-2 bg-[#D9D9D9] text-[#808080] border-0 focus:ring-0 focus:outline-none"
-							value=""
-							// onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+							value={exercicio.foto}
+							onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 						/>
 					</div>
 					<div className="flex flex-col gap-2">
@@ -56,8 +200,8 @@ function FormExercicio() {
 							name="carga"
 							required
 							className="rounded-lg p-2 bg-[#D9D9D9] text-[#808080] border-0 focus:ring-0 focus:outline-none"
-							value=""
-							// onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+							value={exercicio.carga}
+							onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 						/>
 					</div>
 					<div className="flex justify-between gap-4">
@@ -71,8 +215,8 @@ function FormExercicio() {
 								name="foto"
 								required
 								className="rounded-lg p-2 bg-[#D9D9D9] text-[#808080] border-0 focus:ring-0 focus:outline-none"
-								value=""
-								// onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+								value={exercicio.repeticao}
+								onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 							/>
 						</div>
 						<div className="flex flex-col gap-2 w-full">
@@ -85,8 +229,8 @@ function FormExercicio() {
 								name="tempo"
 								required
 								className="rounded-lg p-2 bg-[#D9D9D9] text-[#808080] border-0 focus:ring-0 focus:outline-none"
-								value=""
-								// onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+								value={exercicio.tempo}
+								onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 							/>
 						</div>
 					</div>
@@ -95,10 +239,17 @@ function FormExercicio() {
 						<select
 							name="categoria"
 							id="categoria"
-							className="bg-[#D9D9D9] p-2  rounded-lg border-0 focus:ring-0 focus:outline-none text-[#808080]">
-							<option value="" selected disabled>
-								Selecione uma categoria
-							</option>
+							className="bg-[#D9D9D9] p-2  rounded-lg border-0 focus:ring-0 focus:outline-none text-[#808080]"
+							onChange={(e) => buscarCategoriaPorId(e.currentTarget.value)}
+							>
+
+							<option value="" selected disabled>Selecione uma categoria</option>
+
+							{categorias.map((categoria) => (
+								<>
+									<option key={categoria.id} value={categoria.id}>{categoria.nome}</option>
+								</>
+							))}	
 						</select>
 					</div>
 					<div className="flex justify-center items-center gap-10">
@@ -111,10 +262,10 @@ function FormExercicio() {
 							type="submit"
 							className="rounded-lg disabled:bg-slate-200 border-3 border-[#FD6101] hover:bg-[#FD6101]
                                     text-[#FD6101] hover:text-white font-bold w-1/2 mx-auto py-2 flex justify-center uppercase"
-							// disabled={}
+							disabled={carregandoCategoria}
 						>
 							Salvar
-							{/* {isLoading ?
+							{isLoading ?
                                 <RotatingLines
                                     strokeColor="white"
                                     strokeWidth="5"
@@ -123,7 +274,7 @@ function FormExercicio() {
                                     visible={true}
                                 /> :
                                 <span>Salvar</span>
-                            } */}
+                            }
 						</button>
 					</div>
 				</form>
