@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from 'react';
 import Exercicio from '../../../models/Exercicio';
 import { AuthContext } from '../../../contexts/AuthContext';
 import { buscar } from '../../../services/Service';
-import { ToastAlerta } from '../../../utils/ToasstAlerta';
+import { ToastAlerta } from '../../../utils/ToastAlerta';
 import { DNA } from 'react-loader-spinner';
 
 function ListaExercicios() {

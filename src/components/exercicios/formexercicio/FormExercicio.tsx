@@ -4,7 +4,7 @@ import Categoria from '../../../models/Categoria';
 import Exercicio from '../../../models/Exercicio';
 import { AuthContext } from '../../../contexts/AuthContext';
 import { atualizar, buscar, cadastrar } from '../../../services/Service';
-import { ToastAlerta } from '../../../utils/ToasstAlerta';
+import { ToastAlerta } from '../../../utils/ToastAlerta';
 import { RotatingLines } from 'react-loader-spinner';
 
 function FormExercicio() {
