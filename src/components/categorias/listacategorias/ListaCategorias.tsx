@@ -37,7 +37,7 @@ function ListaCategorias() {
 
   useEffect(() => {
     buscarCategorias()
-}, [categorias.length])
+  }, [categorias.length])
 
   return (
     <>
