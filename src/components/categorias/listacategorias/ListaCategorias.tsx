@@ -4,7 +4,7 @@ import { MagnifyingGlass, Plus, ArrowRight } from "@phosphor-icons/react";
 import CardCategorias from "../cardcategorias/CardCategorias";
 import { buscar } from "../../../services/Service";
 import Categoria from "../../../models/Categoria";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastAlerta } from "../../../utils/ToasstAlerta";
 import { AuthContext } from "../../../contexts/AuthContext";
 
@@ -75,8 +75,11 @@ function ListaCategorias() {
                   </button>
                 </div>
                 <button className="flex items-center justify-center gap-2 border-2 text-[#FD6101] px-4 py-2 rounded-lg hover:bg-[#FD6101] hover:text-white hover:border-[#FD6101] duration-500">
-                  <Plus size={20} />
-                  Categoria
+                  <Link to='/categorias/store'>
+                    <Plus size={20} />
+                    Categoria
+                  </Link>
+                  
                 </button>
               </div>
             </div>

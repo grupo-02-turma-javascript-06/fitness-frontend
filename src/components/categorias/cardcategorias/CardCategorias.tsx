@@ -26,13 +26,13 @@ function CardCategorias({ categoria }: CardCategoriasProps) {
         </div>
 
         <div className="flex justify-end gap-3">
-          <Link to={`/deletarcategoria/${categoria.id}`}>
+          <Link to={`/categoria/detroy/${categoria.id}`}>
             <Trash
               className="text-gray-400 hover:text-[#FD6101] cursor-pointer"
               size={20}
             />
           </Link>
-          <Link to={`/editarcategoria/${categoria.id}`}>
+          <Link to={`/categorias/edit/${categoria.id}`}>
             <Pencil
               className="text-gray-400 hover:text-[#1E2729] cursor-pointer"
               size={20}
