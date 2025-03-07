@@ -9,8 +9,8 @@ import Modal from "../../modal/Modal";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function DeletarCategoria() {
-  const navigate = useNavigate();
-  const { id } = useParams<{ id: string }>();
+	const navigate = useNavigate();
+	const { id } = useParams<{ id: string }>();
 
   const [categoria, setCategoria] = useState<Categoria>({} as Categoria);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -41,14 +41,14 @@ function DeletarCategoria() {
     }
   }, [token]);
 
-  useEffect(() => {
-    if (id !== undefined) {
-      buscarPorId(id);
-    }
-  }, [id]);
+	useEffect(() => {
+		if (id !== undefined) {
+			buscarPorId(id);
+		}
+	}, [id]);
 
-  async function deletarCategoria() {
-    setIsLoading(true);
+	async function deletarCategoria() {
+		setIsLoading(true);
 
     try {
       await deletar(`/categorias/${id}`, {
@@ -65,9 +65,9 @@ function DeletarCategoria() {
       }
     }
 
-    setIsLoading(false);
-    retornar();
-  }
+		setIsLoading(false);
+		retornar();
+	}
 
   function retornar() {
     setIsOpen(false);
