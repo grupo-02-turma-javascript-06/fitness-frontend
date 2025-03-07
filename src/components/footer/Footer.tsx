@@ -1,10 +1,14 @@
 import { GithubLogo } from '@phosphor-icons/react';
+import { ReactNode, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthContext';
 
-export default function Footer() {
+function Footer() {
+	const { usuario } = useContext(AuthContext);
 	let data = new Date().getFullYear();
-
-	return (
+	let component: ReactNode;
+		if(usuario.token !== "") {
+			component = (
 		<footer className="bg-[#1E2729] text-[#FFFFFF] py-8 border-t-2 border-[#FD6101]">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 				<div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 gap-8 text-center sm:text-center md:text-left">
@@ -66,5 +70,13 @@ export default function Footer() {
 				</div>
 			</div>
 		</footer>
-	);
+	)
 }
+
+return (
+	<>{
+		component
+	}</>
+);
+}
+export default Footer;
