@@ -29,14 +29,14 @@ const equipe = [
 	},
 	{
 		nome: 'Jessica Rosário',
-		cargo: 'Desenvolvedor',
+		cargo: 'Desenvolvedora',
 		imagem: 'https://avatars.githubusercontent.com/u/171865716?v=4',
 		linkedin: 'https://www.linkedin.com/in/jessica-rosario-/',
 		github: 'https://github.com/Madsik92',
 	},
 	{
 		nome: 'Jonas Gomes',
-		cargo: 'Desenvolvedora',
+		cargo: 'Desenvolvedor',
 		imagem: 'https://avatars.githubusercontent.com/u/154485867?v=4',
 		linkedin: 'https://www.linkedin.com/in/jonas-neto/',
 		github: 'https://github.com/JunoPrice',
@@ -53,7 +53,7 @@ const equipe = [
 function Equipe() {
 	return (
 		<>
-			<div className="flex justify-center items-center w-full flex-col px-4 pt-24">
+			<div className="flex justify-center items-center w-full flex-col px-4 pt-10">
 				<div className="container text-4xl text-center mb-10">
 					<h1 className="mt-10">
 						Equipe de desenvolvimento da
@@ -67,7 +67,7 @@ function Equipe() {
 							key={index}
 							className="rounded-bl-2xl rounded-br-2xl w-full h-80 mx-1 m-2 overflow-hidden mt-10">
 							<img
-								className="flex justify-center rounded-full w-50 h-50 border-8 border-[#FFFFFF] relative z-10"
+								className="flex justify-center rounded-full w-50 h-50 border-8 border-[#F0F0F0] relative z-10"
 								src={membro.imagem}
 								alt={membro.nome}
 							/>
