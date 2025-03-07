@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from 'react';
 import Exercicio from '../../../models/Exercicio';
 import { AuthContext } from '../../../contexts/AuthContext';
 import { buscar } from '../../../services/Service';
-import { ToastAlerta } from '../../../utils/ToasstAlerta';
+import { ToastAlerta } from '../../../utils/ToastAlerta';
 import { DNA } from 'react-loader-spinner';
 
 function ListaExercicios() {
@@ -51,9 +51,7 @@ function ListaExercicios() {
 						<p className="text-lg lg:text-[2rem]">Comece agora a mudar de vida!</p>
 						<div className="w-full">
 							<button className="min-w-200px mt-4 border-2 border-[#FD6101] px-8 py-2 text-white">
-                                <Link to="/exercicios/store">
-                                    + Exercicio
-                                </Link>
+								<Link to="/exercicios/store">+ Exercicio</Link>
 							</button>
 						</div>
 					</div>

@@ -1,4 +1,19 @@
+import { useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Para navegação
+import { AuthContext } from '../../contexts/AuthContext';
+import { ToastAlerta } from '../../utils/ToastAlerta';
+
 export default function Home() {
+	const navigate = useNavigate();
+	const { usuario } = useContext(AuthContext);
+
+	useEffect(() => {
+		if (!usuario.token) {
+			navigate('/login');
+			ToastAlerta('Você precisa estar logado!', 'info');
+		}
+	}, [usuario, navigate]);
+
 	return (
 		<div className="relative min-h-screen flex items-center">
 			<div

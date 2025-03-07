@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Exercicio from '../../../models/Exercicio';
 import { AuthContext } from '../../../contexts/AuthContext';
 import { buscar, deletar } from '../../../services/Service';
-import { ToastAlerta } from '../../../utils/ToasstAlerta';
+import { ToastAlerta } from '../../../utils/ToastAlerta';
 import { RotatingLines } from 'react-loader-spinner';
 
 function DeletarExercicio() {
