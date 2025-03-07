@@ -5,7 +5,7 @@ import CardCategorias from "../cardcategorias/CardCategorias";
 import { buscar } from "../../../services/Service";
 import Categoria from "../../../models/Categoria";
 import { Link, useNavigate } from "react-router-dom";
-import { ToastAlerta } from "../../../utils/ToasstAlerta";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 import { AuthContext } from "../../../contexts/AuthContext";
 
 function ListaCategorias() {
