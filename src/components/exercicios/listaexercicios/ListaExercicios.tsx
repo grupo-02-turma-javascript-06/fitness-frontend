@@ -44,26 +44,16 @@ function ListaExercicios() {
 
 	return (
 		<>
-			<div className="flex justify-center items-center bg-[#1E2729] flex-col md:h-80">
-				<div className="container flex flex-col justify-center items-center md:items-start md:absolute z-0 p-6 text-white">
-					<div className="flex flex-col justify-center items-center text-center">
-						<h2 className="text-[2rem] lg:text-[4rem] xl:text-[6rem] font-bold">Lista de exercícios</h2>
-						<p className="text-lg lg:text-[2rem]">Comece agora a mudar de vida!</p>
-						<div className="w-full">
-							<button className="min-w-200px mt-4 border-2 border-[#FD6101] px-8 py-2 text-white">
-								<Link to="/exercicios/store">+ Exercicio</Link>
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<div className="container flex justify-center md:justify-end h-full">
+			<div className="  bg-[#1E2729] ">
+				<Link to="/exercicios/store">
 					<img
-						src="https://ik.imagekit.io/q5tv5x3k8/Move2Fit/woman-good-mood-raises-arm-with-muscles-has-strong-body-dressed-gym-outfit-listens-audio-via-modern-headphones-poses-indoor-removebg-preview%201.svg?updatedAt=1741198688950"
-						alt="Mulher Fitness"
-						className="lg:h-full object-cover"
+						src="https://ik.imagekit.io/q5tv5x3k8/Move2Fit/banner-exercicios.svg?updatedAt=1741309888812"
+						alt="Banner de cadastro de exercício"
+						className="w-full"
 					/>
-				</div>
+				</Link>
+				
+				
 			</div>
 
 			<div className="flex flex-col justify-center items-center h-20 text-lg mx-5 md:mx-0">

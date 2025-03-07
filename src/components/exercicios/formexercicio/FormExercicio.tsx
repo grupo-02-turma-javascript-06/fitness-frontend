@@ -138,7 +138,7 @@ function FormExercicio() {
 
 	return (
 		<>
-			<div className="container flex flex-col mx-auto items-center my-8">
+			<div className="container flex flex-col mx-auto items-center my-8 max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl h-auto ">
 				<h1 className="text-4xl text-center my-8">
 					{id !== undefined ? 'Editar Exercício' : 'Cadastrar Exercício'}
 				</h1>
