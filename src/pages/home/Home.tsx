@@ -26,7 +26,6 @@ export default function Home() {
 					filter: 'blur(3px)',
 				}}></div>
 
-			{/* Sombra */}
 			<div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
 
 			<div className="relative px-4 sm:px-6 lg:px-8 py-32 z-10 text-left w-full ml-40">
