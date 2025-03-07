@@ -20,7 +20,7 @@ function Perfil() {
 			<div>
 				<img
 					className="w-full h-80 object-cover max-sm:h-40 max-lg:h-50"
-					src="public\images\image-orange.jpg"
+					src="/images/image-orange.jpg"
 					alt="Capa do Perfil"
 				/>
 
