@@ -1,3 +1,4 @@
+
 import { useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Para navegação
 import { AuthContext } from '../../contexts/AuthContext';
@@ -41,3 +42,4 @@ export default function Home() {
 		</div>
 	);
 }
+

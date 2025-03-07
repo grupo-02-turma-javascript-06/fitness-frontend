@@ -1,73 +1,102 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { RotatingLines } from "react-loader-spinner";
 import { useNavigate, useParams } from "react-router-dom";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
 import Categoria from "../../../models/Categoria";
+import { AuthContext } from "../../../contexts/AuthContext";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function FormCategoria() {
-  const navigate = useNavigate();
-  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate()
 
-  const [categoria, setCategoria] = useState<Categoria>({} as Categoria);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [categoria, setCategoria] = useState<Categoria>({} as Categoria)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  async function buscarPorId(id: string) {
+  const { usuario, handleLogout } = useContext(AuthContext)
+  const token = usuario.token
+
+  const { id } = useParams<{ id: string }>()
+
+  async function buscarCategoriaPorId(id: string) {
     try {
-      await buscar(`/categorias/${id}`, setCategoria);
+        await buscar(`/categorias/${id}`, setCategoria, {
+            headers: { Authorization: token }
+        })
+
     } catch (error: any) {
-      console.error("Erro ao buscar categoria:", error);
-      alert("Você não tem permissão para acessar esta categoria.");
+        if (error.toString().includes('401')) {
+            handleLogout()
+        }
     }
-  }
+}
 
   useEffect(() => {
-    if (id !== undefined) {
-      buscarPorId(id);
+    if (token === '') {
+        ToastAlerta('Você precisa estar logado!', 'info')
+        navigate('/')
     }
-  }, [id]);
+}, [token])
+
+
+useEffect(() => {
+    if (id !== undefined) {
+        buscarCategoriaPorId(id)
+    }
+}, [id])
 
   function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
     setCategoria({
       ...categoria,
-      [e.target.name]: e.target.value,
-    });
+      [e.target.name]: e.target.value
+    })
   }
 
   function retornar() {
-    navigate("/categorias");
+    navigate("/categorias")
   }
 
   async function gerarNovaCategoria(e: ChangeEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setIsLoading(true);
+    e.preventDefault()
+    setIsLoading(true)
 
     if (id !== undefined) {
       try {
-        await atualizar(`/categorias`, categoria, setCategoria);
-        alert("Categoria atualizada com sucesso!");
+        await atualizar(`/categorias`, categoria, setCategoria, {
+            headers: { Authorization: token },
+        })
+        ToastAlerta("Categoria atualizada com sucesso!", 'sucesso')
       } catch (error: any) {
-        console.error("Erro ao atualizar categoria:", error);
-        alert("Erro ao atualizar categoria.");
+          if (error.toString().includes("401")) {
+            handleLogout()
+          } else {
+            ToastAlerta("Erro ao atualizar categoria!", 'erro')
+          }
       }
     } else {
       try {
-        await cadastrar(`/categorias`, categoria, setCategoria);
-        alert("Categoria cadastrada com sucesso!");
+        await cadastrar(`/categorias`, categoria, setCategoria, {
+          headers: { Authorization: token }
+        })
+        ToastAlerta("Categoria cadastrada com sucesso!", 'sucesso')
       } catch (error: any) {
-        console.error("Erro ao cadastrar categoria:", error);
-        alert("Erro ao cadastrar categoria.");
+        if (error.toString().includes("401")) {
+          handleLogout();
+        }else{
+          ToastAlerta("Erro ao cadastrar categoria.", 'erro')
+        }
+        
       }
     }
 
-    setIsLoading(false);
-    retornar();
+    setIsLoading(false)
+    retornar()
   }
 
   return (
     <div className="h-auto min-h-screen flex items-center justify-center">
       <div className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl h-auto p-6 sm:p-8 md:p-12 lg:p-16">
         <h2 className="text-3xl font-bold mb-4 text-center">
-          {id === undefined ? "Cadastro de Categoria" : "Editar Categoria"}
+          {id === undefined ? "Cadastrar Categoria" : "Editar Categoria"}
         </h2>
         <form className="my-5" onSubmit={gerarNovaCategoria}>
           <div>

@@ -1,32 +1,47 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DNA } from "react-loader-spinner";
 import { MagnifyingGlass, Plus, ArrowRight } from "@phosphor-icons/react";
 import CardCategorias from "../cardcategorias/CardCategorias";
 import { buscar } from "../../../services/Service";
 import Categoria from "../../../models/Categoria";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastAlerta } from "../../../utils/ToasstAlerta";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 function ListaCategorias() {
+  const navigate = useNavigate()
+
   const [categorias, setCategorias] = useState<Categoria[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  const { usuario, handleLogout } = useContext(AuthContext)
+  const token = usuario.token
 
   async function buscarCategorias() {
     try {
-      await buscar("/categorias", setCategorias);
+      await buscar("/categorias", setCategorias, {
+        headers: { Authorization: token }
+      })
     } catch (error: any) {
-      console.error("Erro ao buscar categorias:", error);
-      alert("Você não tem permissão para acessar as categorias.");
-    } finally {
-      setIsLoading(false);
+      if (error.toString().includes('401')){
+        handleLogout()
+      }
     }
   }
 
   useEffect(() => {
-    buscarCategorias();
-  }, []);
+    if (token === ''){
+      ToastAlerta('Você precisa estar logado!', 'info')
+      navigate('/')
+    }
+  }, [token])
+
+  useEffect(() => {
+    buscarCategorias()
+  }, [categorias.length])
 
   return (
     <>
-      {isLoading ? (
+      {categorias.length === 0 && (
         <DNA
           visible={true}
           height="200"
@@ -35,7 +50,7 @@ function ListaCategorias() {
           wrapperStyle={{}}
           wrapperClass="dna-wrapper mx-auto"
         />
-      ) : (
+      )}
         <div className="w-full">
           <div className="p-8">
             <div className="flex flex-col md:flex-row justify-between items-center mb-6">
@@ -60,8 +75,11 @@ function ListaCategorias() {
                   </button>
                 </div>
                 <button className="flex items-center justify-center gap-2 border-2 text-[#FD6101] px-4 py-2 rounded-lg hover:bg-[#FD6101] hover:text-white hover:border-[#FD6101] duration-500">
-                  <Plus size={20} />
-                  Categoria
+                  <Link to='/categorias/store'>
+                    <Plus size={20} />
+                    Categoria
+                  </Link>
+                  
                 </button>
               </div>
             </div>
@@ -73,7 +91,7 @@ function ListaCategorias() {
             </div>
           </div>
         </div>
-      )}
+      
     </>
   );
 }
