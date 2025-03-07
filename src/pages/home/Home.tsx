@@ -1,5 +1,6 @@
+
 import { useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Para navegação
+import { Link, useNavigate } from 'react-router-dom'; // Para navegação
 import { AuthContext } from '../../contexts/AuthContext';
 import { ToastAlerta } from '../../utils/ToastAlerta';
 
@@ -26,7 +27,6 @@ export default function Home() {
 					filter: 'blur(3px)',
 				}}></div>
 
-			{/* Sombra */}
 			<div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
 
 			<div className="relative px-4 sm:px-6 lg:px-8 py-32 z-10 text-left w-full ml-40">
@@ -36,9 +36,10 @@ export default function Home() {
 					fitness mais eficaz.
 				</p>
 				<button className="bg-[#FD6101] hover:bg-[#b44d00] text-white w-[180px] h-[50px] rounded-[5px] text-[20px] font-medium">
-					PERFIL
+					<Link to="/perfil">PERFIL</Link>
 				</button>
 			</div>
 		</div>
 	);
 }
+

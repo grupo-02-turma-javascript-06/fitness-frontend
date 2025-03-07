@@ -1,3 +1,4 @@
+
 import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -20,7 +21,7 @@ function Perfil() {
 			<div>
 				<img
 					className="w-full h-80 object-cover max-sm:h-40 max-lg:h-50"
-					src="public\images\image-orange.jpg"
+					src="/images/image-orange.jpg"
 					alt="Capa do Perfil"
 				/>
 
@@ -52,3 +53,4 @@ function Perfil() {
 }
 
 export default Perfil;
+
