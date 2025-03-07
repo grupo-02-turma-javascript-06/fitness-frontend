@@ -199,7 +199,7 @@ function FormExercicio() {
 							placeholder="Digite o peso necessário"
 							name="carga"
 							className="rounded-lg p-2 bg-[#D9D9D9] text-[#808080] border-0 focus:ring-0 focus:outline-none"
-							value={exercicio.carga ?? "0"}
+							value={exercicio.carga}
 							onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 						/>
 					</div>
@@ -213,7 +213,7 @@ function FormExercicio() {
 								placeholder="insira repetições"
 								name="repeticao"
 								className="rounded-lg p-2 bg-[#D9D9D9] text-[#808080] border-0 focus:ring-0 focus:outline-none"
-								value={exercicio.repeticao ?? "0"}
+								value={exercicio.repeticao}
 								onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 							/>
 						</div>
@@ -226,7 +226,7 @@ function FormExercicio() {
 								placeholder="insira o tempo"
 								name="tempo"
 								className="rounded-lg p-2 bg-[#D9D9D9] text-[#808080] border-0 focus:ring-0 focus:outline-none"
-								value={exercicio.tempo ?? "0"}
+								value={exercicio.tempo}
 								onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 							/>
 						</div>
@@ -261,7 +261,6 @@ function FormExercicio() {
                                     text-[#FD6101] hover:text-white font-bold w-1/2 mx-auto py-2 flex justify-center uppercase"
 							disabled={carregandoCategoria}
 						>
-							Salvar
 							{isLoading ?
                                 <RotatingLines
                                     strokeColor="white"

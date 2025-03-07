@@ -9,40 +9,45 @@ interface CardExerciciosProps {
 function CardExercicios({ exercicio }: CardExerciciosProps) {
 	return (
 		<>
-			<div className="drop-shadow-lg flex flex-col rounded-2xl overflow-hidden justify-between bg-white text-[#1E2729]">
-				<div>
-					<div className="flex w-full  items-center gap-4">
-						<img src={exercicio.foto} alt={exercicio.nome} />
+			<div className="drop-shadow-lg flex flex-col rounded-lg overflow-hidden justify-center bg-white text-[#1E2729]">
+				
+					<div className='w-full items-center'>
+						<img src={exercicio.foto} alt={exercicio.nome} className='w-full h-65 object-cover'/>
 					</div>
-					<div className="flex flex-col py-6 gap-6 px-8">
-						<div className="flex flex-col gap-6">
+					
+					<div className="flex flex-col py-6 gap-4 px-8">
+						<div className="flex flex-col gap-2">
 							<h2 className="text-xl font-semibold">{exercicio.nome}</h2>
-							<div className="flex justify-between gap-6">
-								<div className="flex gap-3">
+							<div className="flex justify-start gap-8">
+								<div className="flex items-center gap-3 text-lg">
 									<img
 										src="https://ik.imagekit.io/q5tv5x3k8/Move2Fit/exercise%20(2)%201.svg?updatedAt=1741195777018"
 										alt=""
+										className='h-7'
 									/>
-									<p>{exercicio.carga}</p>
+									<p className="text-lg">{exercicio.carga}</p>
 								</div>
-								<div className="flex gap-3">
+								<div className="flex items-center gap-3">
 									<img
 										src="https://ik.imagekit.io/q5tv5x3k8/Move2Fit/repeat%201.svg?updatedAt=1741195776962"
 										alt=""
+										className='h-7'
 									/>
-									<p>{exercicio.repeticao}</p>
+									<p className="text-lg">{exercicio.repeticao}</p>
 								</div>
-								<div className="flex gap-3">
+								<div className="flex items-center gap-3">
 									<img
 										src="https://ik.imagekit.io/q5tv5x3k8/Move2Fit/time-left%201.svg?updatedAt=1741195777094"
 										alt=""
+										className='h-7'
 									/>
-									<p>{exercicio.tempo}</p>
+									<p className="text-lg">{exercicio.tempo}</p>
 								</div>
 							</div>
-							<p>{exercicio.descricao}</p>
-							<div className="flex gap-4">
-								<img src={exercicio.categoria?.icone} alt={exercicio.categoria?.nome} />
+							<div><p className="text-lg">{exercicio.descricao}</p></div>
+							
+							<div className="flex justify-start items-center gap-4">
+								<img src={exercicio.categoria?.icone} alt={exercicio.categoria?.nome} className='h-10'/>
 								<p>{exercicio.categoria?.nome}</p>
 							</div>
 						</div>
@@ -67,7 +72,7 @@ function CardExercicios({ exercicio }: CardExerciciosProps) {
 							</Link>
 						</div>
 					</div>
-				</div>
+				
 			</div>
 		</>
 	);
