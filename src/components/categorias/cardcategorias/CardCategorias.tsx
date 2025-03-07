@@ -14,8 +14,8 @@ function CardCategorias({ categoria }: CardCategoriasProps) {
 					<div className="flex w-full items-center gap-3 font-semibold">
 						<img
 							className="w-10 h-10"
-							src="https://ik.imagekit.io/madsik/REACT/ICONS/icon-cardio.svg?updatedAt=1741205579259"
-							alt="icon-categoria"
+							src={categoria.icone}
+							alt={categoria.nome}
 						/>
 						<h2>{categoria.nome}</h2>
 					</div>

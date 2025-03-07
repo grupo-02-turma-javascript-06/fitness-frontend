@@ -15,6 +15,7 @@ import ListaExercicios from './components/exercicios/listaexercicios/ListaExerci
 import FormExercicio from './components/exercicios/formexercicio/FormExercicio';
 import DeletarExercicio from './components/exercicios/deletarexercicio/DeletarExercicio';
 import Perfil from './pages/perfil/Perfil';
+import HomePage from './pages/homepage/HomePage';
 
 function App() {
 	return (
@@ -25,7 +26,7 @@ function App() {
 					<Navbar />
 					<div className="min-h-[80vh]">
 						<Routes>
-							<Route path="/" element={<LoginCadastroForm />} />
+							<Route path="/" element={<HomePage />} />
 							<Route path="/login" element={<LoginCadastroForm />} />
 							<Route path="/cadastro" element={<LoginCadastroForm />} />
 							<Route path="/home" element={<Home />} />

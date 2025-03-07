@@ -84,7 +84,7 @@ function DeletarExercicio() {
 						Você tem certeza de que deseja apagar esse Exercício?
 					</p>
 					<div className="flex flex-col justify-between overflow-hidden">
-						<p className="h-full p-8 text-3xl text-center bg-white">{exercicio.nome}</p>
+						<p className="h-full p-8 text-3xl font-bold text-center bg-white">{exercicio.nome}</p>
 						<div className="flex justify-center gap-5">
 							<button
 								className="w-30 rounded-lg py-2 bg-[#FD6101] text-white hover:bg-[#B63700] duration-500 "

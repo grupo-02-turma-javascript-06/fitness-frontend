@@ -1,5 +1,5 @@
 import { UserCircle, List } from '@phosphor-icons/react';
-import React, { ReactNode, useContext, useState } from 'react';
+import { ReactNode, useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 import { ToastAlerta } from '../../utils/ToastAlerta';
@@ -45,15 +45,18 @@ function Navbar() {
                         <Link to="/categorias" className="text-white hover:text-orange-500 transition-colors">
                             Categorias
                         </Link>
-                        {usuario.foto ? (
-                            <img 
-                                src={usuario.foto} 
-                                alt={`Foto de perfil de ${usuario.nome}`} 
-                                className="w-10 h-10 rounded-full object-cover cursor-pointer border-2 border-orange-500"
-                            />
-                        ) : (
-                            <UserCircle size={40} className="text-gray-300 cursor-pointer hover:text-white flex-shrink-0" />
-                        )}
+						<Link to='/perfil'>
+							{usuario.foto ? (
+								<img 
+									src={usuario.foto} 
+									alt={`Foto de perfil de ${usuario.nome}`} 
+									className="w-10 h-10 rounded-full object-cover cursor-pointer border-2 border-orange-500"
+								/>
+							) : (
+								<UserCircle size={40} className="text-gray-300 cursor-pointer hover:text-white flex-shrink-0" />
+							)}
+						</Link>
+                        
                         <Link to="#" onClick={logout} className="text-white hover:text-orange-500 transition-colors">
                             Sair
                         </Link>

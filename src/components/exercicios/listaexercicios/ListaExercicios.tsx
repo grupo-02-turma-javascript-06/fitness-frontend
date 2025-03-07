@@ -12,9 +12,9 @@ function ListaExercicios() {
 	const navigate = useNavigate();
 
 	const [exercicios, setExercicios] = useState<Exercicio[]>([]);
-
+	const [query, setQuery] = useState(""); // Adicionando estado para pesquisa
+	
 	const { usuario, handleLogout } = useContext(AuthContext);
-
 	const token = usuario.token;
 
 	async function buscarExercicios() {
@@ -35,16 +35,19 @@ function ListaExercicios() {
 		if (token === '') {
 			ToastAlerta('Você precisa estar logado!', 'erro');
 			navigate('/');
+		} else {
+			buscarExercicios();
 		}
 	}, [token]);
 
-	useEffect(() => {
-		buscarExercicios();
-	}, [exercicios.length]);
+	// Filtrando os exercícios com base no nome e no valor da pesquisa
+	const filterExercicios = exercicios.filter((exercicio) =>
+		exercicio.nome.toLowerCase().includes(query.toLowerCase())
+	);
 
 	return (
 		<>
-			<div className="  bg-[#1E2729] ">
+			<div className="bg-[#1E2729]">
 				<Link to="/exercicios/store">
 					<img
 						src="https://ik.imagekit.io/q5tv5x3k8/Move2Fit/banner-exercicios.svg?updatedAt=1741309888812"
@@ -52,25 +55,30 @@ function ListaExercicios() {
 						className="w-full"
 					/>
 				</Link>
-				
-				
 			</div>
 
 			<div className="flex flex-col justify-center items-center h-20 text-lg mx-5 md:mx-0">
 				<div className="container flex flex-col md:flex-row justify-between gap-5 mt-15 md:mt-0">
-					<div className="flex flex-col gap-2 md:w-[20vw]">
+					{/* <div className="flex flex-col gap-2 md:w-[20vw]">
 						<select
 							name="categoria"
 							id="categoria"
-							className="bg-[#D9D9D9] p-2  rounded-lg border-0 focus:ring-0 focus:outline-none text-[#808080]">
+							className="bg-[#D9D9D9] p-2 rounded-lg border-0 focus:ring-0 focus:outline-none text-[#808080]">
 							<option value="" selected disabled>
 								Categorias
 							</option>
+							{exercicios.map((exercicio) => (
+								<>
+									<option key={exercicio.id} value={exercicio.id}>
+										{exercicio.nome}
+									</option>
+								</>
+							))}
 						</select>
-					</div>
+					</div> */}
 
-					<div className="flex flex-col gap-2 md:w-[80vw] ">
-						<form className="flex justify-center items-center mx-auto w-full gap-4 ">
+					<div className="flex flex-col gap-2 md:w-[80vw]">
+						<form className="flex justify-center items-center mx-auto w-full gap-4">
 							<label htmlFor="search" className="sr-only">
 								Search
 							</label>
@@ -84,6 +92,8 @@ function ListaExercicios() {
 									id="simple-search"
 									className="w-full border-0 focus:ring-0 focus:outline-none py-2 px-4"
 									placeholder="Pesquisar Exercício"
+									value={query} // Vinculando o estado `query` ao valor do input
+									onChange={(e) => setQuery(e.target.value)} // Atualizando o estado conforme o usuário digita
 								/>
 							</div>
 						</form>
@@ -101,15 +111,14 @@ function ListaExercicios() {
 					wrapperClass="dna-wrapper mx-auto"
 				/>
 			)}
+
 			<div className="flex justify-center w-full my-4 mt-15 md:mt-0">
 				<div className="container flex flex-col mx-2">
-					{exercicios.length === 0 && (
+					{filterExercicios.length === 0 && (
 						<span className="text-3xl text-center my-8">Nenhum exercício foi encontrado</span>
 					)}
-					<div
-						className="container mx-auto my-4 
-                        grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-						{exercicios.map((exercicio) => (
+					<div className="container mx-auto my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+						{filterExercicios.map((exercicio) => (
 							<CardExercicios key={exercicio.id} exercicio={exercicio} />
 						))}
 					</div>

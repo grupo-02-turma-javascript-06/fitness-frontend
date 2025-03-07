@@ -1,4 +1,8 @@
-export default function HomePage() {
+import { Link } from "react-router-dom";
+
+function HomePage() {
+
+
 	return (
 		<div className="relative min-h-screen flex items-center justify-center">
 			<div
@@ -23,20 +27,19 @@ export default function HomePage() {
 					<span className="block">personal trainers para uma jornada fitness mais eficaz.</span>
 				</p>
 
-				<div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 mt-8">
-					<button
-						className="bg-[#FD6101] text-white px-8 py-3 rounded-md 
-                  hover:bg-[#ff7a33] transition-colors duration-300 font-medium w-52 text-xl">
-						LOGIN
-					</button>
-
-					<button
-						className="bg-transparent text-white border-2 border-[#FD6101] px-8 py-3 rounded-md 
-                  hover:bg-[#FD6101] hover:text-white hover:shadow-lg transition-all duration-300 font-medium w-52 text-xl">
-						CADASTRO
-					</button>
+				<div className="flex sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 mt-8">
+					<Link to="/login">
+						<button
+							className="bg-[#FD6101] text-white px-8 py-3 rounded-md 
+						hover:bg-[#ff7a33] transition-colors duration-300 font-medium w-52 text-xl uppercase">
+							continuar
+						</button>
+					</Link>
+					
 				</div>
 			</div>
 		</div>
 	);
 }
+
+export default HomePage;
