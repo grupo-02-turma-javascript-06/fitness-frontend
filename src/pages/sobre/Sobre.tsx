@@ -1,7 +1,6 @@
 function Sobre() {
 	return (
 		<div className="relative min-h-screen bg-black">
-			{/* Sombra */}
 			<div
 				className="absolute inset-0 z-10"
 				style={{
@@ -13,7 +12,6 @@ function Sobre() {
 				}}
 			/>
 
-			{/* Imagem de Fundo */}
 			<div
 				className="absolute inset-0"
 				style={{
@@ -25,7 +23,6 @@ function Sobre() {
 				}}
 			/>
 
-			{/* Texto */}
 			<div className="relative z-20 container mx-auto px-6 md:px-12 pt-45 py-85">
 				<div className="max-w-2xl">
 					<h2 className="text-[#FD6101] text-2xl mb-4 block">Sobre nós |</h2>
@@ -42,8 +39,8 @@ function Sobre() {
 
 					<button
 						className="bg-[#FD6101] text-white px-8 py-3 rounded-md 
-              hover:bg-[#ff7a33] transition-colors duration-300 font-medium">
-						CONTATE-NOS
+              hover:bg-[#ff7a33] transition-colors duration-300 font-medium cursor-pointer">
+						<a href="https://github.com/grupo-02-turma-javascript-06/fitness-frontend">CONTATE-NOS</a>
 					</button>
 				</div>
 			</div>
