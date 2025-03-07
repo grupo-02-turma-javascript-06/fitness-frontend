@@ -4,8 +4,9 @@ import { buscar, deletar } from "../../../services/Service";
 import { RotatingLines } from "react-loader-spinner";
 import Categoria from "../../../models/Categoria";
 import { AuthContext } from "../../../contexts/AuthContext";
-import { ToastAlerta } from "../../../utils/ToasstAlerta";
+
 import Modal from "../../modal/Modal";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function DeletarCategoria() {
   const navigate = useNavigate();
