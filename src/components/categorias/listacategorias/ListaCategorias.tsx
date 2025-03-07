@@ -22,14 +22,14 @@ function ListaCategorias() {
         headers: { Authorization: token }
       })
     } catch (error: any) {
-      if (error.toString().includes('401')){
+      if (error.toString().includes('401')) {
         handleLogout()
       }
     }
   }
 
   useEffect(() => {
-    if (token === ''){
+    if (token === '') {
       ToastAlerta('Você precisa estar logado!', 'info')
       navigate('/')
     }
@@ -41,7 +41,18 @@ function ListaCategorias() {
 
   return (
     <>
+
+      <div className="  bg-[#1E2729] ">
+
+        <img
+          src="/public/images/banner-categorias-lista.svg"
+          alt="Banner de cadastro de exercício"
+          className="w-full"
+        />
+
+      </div>
       <div className="mt-15 flex flex-col gap-12">
+
         <div className="flex flex-col justify-center items-center h-20 text-lg mx-4 md:mx-0">
           <div className="container flex flex-col lg:flex-row justify-center items-center gap-5  mt-15 md:mt-0 w-full ">
             <div className="w-full text-center md:w-[30%]">
@@ -73,7 +84,7 @@ function ListaCategorias() {
                       <Plus size={20} />
                       Categoria
                     </Link>
-                    
+
                   </button>
                 </div>
 
