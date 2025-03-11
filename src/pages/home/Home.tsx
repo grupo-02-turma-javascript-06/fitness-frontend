@@ -1,4 +1,3 @@
-
 import { useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Para navegação
 import { AuthContext } from '../../contexts/AuthContext';
@@ -20,7 +19,7 @@ export default function Home() {
 			<div
 				className="absolute top-0 left-0 w-full h-full"
 				style={{
-					backgroundImage: `url('https://ik.imagekit.io/yijg14v4w/fitness-frontend/04b459c3abb9e69509a3533e5855866a.jpg?updatedAt=1741177726542')`,
+					backgroundImage: `url('/images/woman-two-men.jpg')`,
 					backgroundSize: 'cover',
 					backgroundPosition: 'center',
 					backgroundColor: 'transparent',
@@ -35,11 +34,12 @@ export default function Home() {
 					Treinos organizados, resultados reais! Conectando alunos e personal trainers para uma jornada
 					fitness mais eficaz.
 				</p>
-				<button className="bg-[#FD6101] hover:bg-[#b44d00] text-white w-[180px] h-[50px] rounded-[5px] text-[20px] font-medium">
-					<Link to="/perfil">PERFIL</Link>
-				</button>
+				<Link to="/perfil">
+					<button className="bg-[#FD6101] hover:bg-[#b44d00] text-white w-[180px] h-[50px] rounded-[5px] text-[20px] font-medium cursor-pointer">
+						PERFIL
+					</button>
+				</Link>
 			</div>
 		</div>
 	);
 }
-

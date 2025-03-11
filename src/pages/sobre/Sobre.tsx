@@ -4,8 +4,7 @@ function Sobre() {
 			<div
 				className="absolute inset-0 z-10"
 				style={{
-					backgroundImage:
-						'url(https://ik.imagekit.io/yijg14v4w/fitness-frontend/Rectangle-shadow.svg?updatedAt=1741271439237)',
+					backgroundImage: 'url(/images/Rectangle-shadow.svg)',
 					backgroundSize: 'cover',
 					backgroundPosition: 'center',
 					mixBlendMode: 'multiply',
@@ -15,8 +14,7 @@ function Sobre() {
 			<div
 				className="absolute inset-0"
 				style={{
-					backgroundImage:
-						'url(https://ik.imagekit.io/yijg14v4w/fitness-frontend/fit.jpg?updatedAt=1741271342463)',
+					backgroundImage: 'url(/images/man-exercise.jpg)',
 					backgroundSize: 'cover',
 					backgroundPosition: 'center',
 					opacity: '0.8',

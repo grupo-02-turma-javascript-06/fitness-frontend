@@ -247,7 +247,9 @@ function FormExercicio() {
 						</select>
 					</div>
 					<div className="flex justify-center items-center gap-10">
-						<button onClick={retornar}
+						<button
+							type="button"
+							onClick={retornar}
 							className="rounded-lg disabled:bg-slate-200 hover:border-3 bg-[#FD6101] hover:bg-[#B63700]
                                     text-white font-bold w-1/2 mx-auto py-2 flex justify-center uppercase">
 							Cancelar
@@ -256,18 +258,18 @@ function FormExercicio() {
 							type="submit"
 							className="rounded-lg disabled:bg-slate-200 border-3 border-[#FD6101] hover:bg-[#FD6101]
                                     text-[#FD6101] hover:text-white font-bold w-1/2 mx-auto py-2 flex justify-center uppercase"
-							disabled={carregandoCategoria}
-						>
-							{isLoading ?
-                                <RotatingLines
-                                    strokeColor="white"
-                                    strokeWidth="5"
-                                    animationDuration="0.75"
-                                    width="24"
-                                    visible={true}
-                                /> :
-                                <span>Salvar</span>
-                            }
+							disabled={carregandoCategoria}>
+							{isLoading ? (
+								<RotatingLines
+									strokeColor="white"
+									strokeWidth="5"
+									animationDuration="0.75"
+									width="24"
+									visible={true}
+								/>
+							) : (
+								<span>Salvar</span>
+							)}
 						</button>
 					</div>
 				</form>

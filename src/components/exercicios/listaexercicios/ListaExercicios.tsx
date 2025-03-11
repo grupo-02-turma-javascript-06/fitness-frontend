@@ -12,8 +12,8 @@ function ListaExercicios() {
 	const navigate = useNavigate();
 
 	const [exercicios, setExercicios] = useState<Exercicio[]>([]);
-	const [query, setQuery] = useState(""); // Adicionando estado para pesquisa
-	
+	const [query, setQuery] = useState(''); // Adicionando estado para pesquisa
+
 	const { usuario, handleLogout } = useContext(AuthContext);
 	const token = usuario.token;
 
@@ -42,18 +42,14 @@ function ListaExercicios() {
 
 	// Filtrando os exercícios com base no nome e no valor da pesquisa
 	const filterExercicios = exercicios.filter((exercicio) =>
-		exercicio.nome.toLowerCase().includes(query.toLowerCase())
+		exercicio.nome.toLowerCase().includes(query.toLowerCase()),
 	);
 
 	return (
 		<>
 			<div className="bg-[#1E2729]">
 				<Link to="/exercicios/store">
-					<img
-						src="https://ik.imagekit.io/q5tv5x3k8/Move2Fit/banner-exercicios.svg?updatedAt=1741309888812"
-						alt="Banner de cadastro de exercício"
-						className="w-full"
-					/>
+					<img src="/images/banner-exercicios.svg" alt="Banner de cadastro de exercício" className="w-full" />
 				</Link>
 			</div>
 

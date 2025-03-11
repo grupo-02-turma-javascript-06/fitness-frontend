@@ -1,4 +1,3 @@
-
 import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -53,4 +52,3 @@ function Perfil() {
 }
 
 export default Perfil;
-
