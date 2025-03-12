@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import './LoginCadastroForm.css';
 import Usuario from '../../models/Usuario';
 import { cadastrarUsuario } from '../../services/Service';
@@ -36,17 +36,17 @@ const Cadastro: React.FC = () => {
 		return () => clearTimeout(timer);
 	}, [showPassword]);
 
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 
-	useEffect(() => {
-		if (usuario.id !== 0) {
-			retornar();
-		}
-	}, [usuario]);
+	// useEffect(() => {
+	// 	if (usuario.id !== 0) {
+	// 		retornar();
+	// 	}
+	// }, [usuario]);
 
-	function retornar() {
-		navigate('/login');
-	}
+	// function retornar() {
+	// 	navigate('/login');
+	// }
 
 	function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
 		setUsuario({
@@ -88,10 +88,10 @@ const Cadastro: React.FC = () => {
 			try {
 				await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario);
 				ToastAlerta('Usuário cadastrado com sucesso!', 'sucesso');
-				setTimeout(() => {
-					navigate('/login');
-					window.location.reload();
-				}, 100); // Aguarda 2 segundos antes de redirecionar e recarregar a página
+				// setTimeout(() => {
+				// 	navigate('/login');
+				// 	window.location.reload();
+				// }, 100); // Aguarda 2 segundos antes de redirecionar e recarregar a página
 			} catch (error) {
 				ToastAlerta('Erro ao cadastrar o usuário!', 'erro');
 			}
