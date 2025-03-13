@@ -9,7 +9,7 @@ interface CardExerciciosProps {
 function CardExercicios({ exercicio }: CardExerciciosProps) {
 	return (
 		<>
-			<div className="drop-shadow-lg flex flex-col rounded-lg overflow-hidden justify-center bg-white text-[#1E2729]">
+			<div className="h-140 md:min-h-50 drop-shadow-lg flex flex-col rounded-lg overflow-hidden justify-center bg-white text-[#1E2729]">
 				<div className="w-full items-center">
 					<img src={exercicio.foto} alt={exercicio.nome} className="w-full h-65 object-cover" />
 				</div>
