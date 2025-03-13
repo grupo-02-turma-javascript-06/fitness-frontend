@@ -3,7 +3,7 @@
 <br />
 
 <div align="center">
-    <img src="" alt="Logo da Move2Fit"/>
+    <img src="./public/images/logo-fundo-branco.png" alt="Logo da Move2Fit"/>
 </div>
 
 <br /> <br />
@@ -51,10 +51,10 @@ API foi criada para fazer gestão de exercícios, cargas, tempo e repetição, o
 
 ## 3. Layout da Aplicação
 
-[Layout Figma]()
+[Layout Figma](https://www.figma.com/design/ktHpttFtbqKxtrQmeS2evf/Move2Fit---Fitness?node-id=0-1&t=dQ9bMB2eq8nTaYaW-1)
 
 <div align="center">
-    <img src="" alt="Foto do layout" width="50%" />
+    <img src="./public/images/layout-figma.png" alt="Foto do layout" width="50%" />
 </div>
 
 ---
