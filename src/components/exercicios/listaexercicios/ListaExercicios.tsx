@@ -12,7 +12,8 @@ function ListaExercicios() {
 	const navigate = useNavigate();
 
 	const [exercicios, setExercicios] = useState<Exercicio[]>([]);
-	const [query, setQuery] = useState(''); // Adicionando estado para pesquisa
+	const [query, setQuery] = useState('');
+	const [categoriaId, setCategoriaId] = useState('');
 
 	const { usuario, handleLogout } = useContext(AuthContext);
 	const token = usuario.token;
@@ -40,8 +41,10 @@ function ListaExercicios() {
 		}
 	}, [token]);
 
-	const filterExercicios = exercicios.filter((exercicio) =>
-		exercicio.nome.toLowerCase().includes(query.toLowerCase()),
+	const filterExercicios = exercicios.filter(
+		(exercicio) =>
+			exercicio.nome.toLowerCase().includes(query.toLowerCase()) &&
+			(categoriaId === '' || String(exercicio.categoria?.id) === categoriaId),
 	);
 
 	return (
@@ -54,9 +57,25 @@ function ListaExercicios() {
 
 			<div className="flex flex-col justify-center items-center h-20 text-lg mx-5 md:mx-0">
 				<div className="container flex flex-col md:flex-row justify-between gap-5 mt-15 md:mt-0">
-					
+					<div className="flex flex-col">
+						<select
+							name="categoria"
+							id="categoria"
+							className="bg-[#D9D9D9] p-2 rounded-lg border-0 focus:ring-0 focus:outline-none text-[#808080]"
+							value={categoriaId}
+							onChange={(e) => setCategoriaId(e.target.value)}>
+							<option value="">Todas as Categorias</option>
+							{Array.from(new Set(exercicios.map((exercicio) => exercicio.categoria?.id)))
+								.filter((id) => id)
+								.map((id) => (
+									<option key={id} value={id}>
+										{exercicios.find((ex) => ex.categoria?.id === id)?.categoria?.nome}
+									</option>
+								))}
+						</select>
+					</div>
 
-					<div className="flex flex-col w-full gap-2">
+					<div className="flex flex-col gap-2 md:w-[80vw]">
 						<form className="flex justify-center items-center mx-auto w-full gap-4">
 							<label htmlFor="search" className="sr-only">
 								Search
