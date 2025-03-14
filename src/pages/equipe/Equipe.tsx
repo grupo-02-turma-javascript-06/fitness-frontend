@@ -53,15 +53,15 @@ const equipe = [
 function Equipe() {
 	return (
 		<>
-			<div className="flex justify-center items-center w-full flex-col px-4 pt-10">
-				<div className="container text-4xl text-center mb-10">
+			<div className="@container flex justify-center items-center w-full flex-col px-4 pt-5 max-lg:pt-0">
+				<div className="text-4xl text-center mb-10">
 					<h1 className="mt-10">
 						Equipe de desenvolvimento da
-						<span className="pl-2 text-[#FD6101]">Move2Fit</span>
+						<span className="pl-2 text-[#FD6101] font-medium">Move2Fit</span>
 					</h1>
 				</div>
 
-				<div className="container mx-auto justify-center items-center max-w-screen-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-rows-[auto,auto,auto] gap-8 mb-10">
+				<div className="container mx-auto justify-center items-center max-w-screen-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-rows-[auto,auto,auto] gap-8 mb-10 ">
 					{equipe.map((membro, index) => (
 						<div
 							key={index}
@@ -76,16 +76,16 @@ function Equipe() {
 								<div className="absolute top-1 right-[-70px] gap-6 flex w-50 mt-5">
 									<a href={membro.linkedin} target="_blank" rel="noopener noreferrer">
 										<img
-											src="images/linkedin-1.svg"
+											src="images/linkedin.png"
 											alt=""
-											className="transition-transform duration-300 hover:-translate-y-3"
+											className="transition-transform duration-300 hover:-translate-y-3 w-10"
 										/>
 									</a>
 									<a href={membro.github} target="_blank" rel="noopener noreferrer">
 										<img
-											src="images/github-1.svg"
+											src="images/github.png"
 											alt=""
-											className="transition-transform duration-300 hover:-translate-y-3"
+											className="transition-transform duration-300 hover:-translate-y-3 w-10"
 										/>
 									</a>
 								</div>
@@ -97,6 +97,7 @@ function Equipe() {
 						</div>
 					))}
 				</div>
+				<div className="mb-480 md:mb-10"></div>
 			</div>
 		</>
 	);
