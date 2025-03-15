@@ -141,7 +141,7 @@ function FormCategoria() {
 						</button>
 						<button
 							type="submit"
-							className="w-1/2 font-medium uppercase items-center justify-center gap-2 border-2 text-[#FD6101] px-4 py-2 rounded-lg hover:bg-[#FD6101] hover:text-white hover:border-[#FD6101] duration-500">
+							className="rounded-lg disabled:bg-slate-200 border-3 border-[#FD6101] hover:bg-[#FD6101] text-[#FD6101] hover:text-white font-bold w-1/2 mx-auto py-2 flex justify-center uppercase">
 							{isLoading ? (
 								<RotatingLines
 									strokeColor="white"
