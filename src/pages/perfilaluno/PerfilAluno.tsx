@@ -4,7 +4,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { ToastAlerta } from '../../utils/ToastAlerta';
 import Aluno from '../../models/Aluno';
 import { buscar } from '../../services/Service';
-import { IMC_FAIXAS } from '../perfil/ImcFaixas';
+import { IMC_FAIXAS } from './ImcFaixasAluno';
+
 
 
 function PerfilAluno() {
