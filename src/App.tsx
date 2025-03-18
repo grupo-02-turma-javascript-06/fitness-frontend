@@ -18,9 +18,9 @@ import DeletarExercicio from './components/exercicios/deletarexercicio/DeletarEx
 import ListaAluno from './components/aluno/listaaluno/ListaAluno';
 import FormAluno from './components/aluno/formaluno/FormAluno';
 import DeletarAluno from './components/aluno/deletaraluno/DeletarAluno';
+import PerfilAluno from './pages/perfilaluno/PerfilAluno';
 
 import 'react-toastify/dist/ReactToastify.css';
-import PerfilAluno from './pages/perfilaluno/PerfilAluno';
 
 function App() {
 	return (

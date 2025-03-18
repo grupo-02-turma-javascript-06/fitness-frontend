@@ -1,3 +1,4 @@
+import Aluno from './Aluno';
 import Categoria from './Categoria';
 
 export default interface Exercicio {
@@ -9,4 +10,5 @@ export default interface Exercicio {
 	tempo: string;
 	foto: string;
 	categoria: Categoria | null;
+    aluno?: Aluno[] | null;
 }

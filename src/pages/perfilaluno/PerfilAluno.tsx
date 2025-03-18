@@ -2,8 +2,9 @@ import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ToastAlerta } from '../../utils/ToastAlerta';
-import Aluno from '../../models/Aluno';
 import { buscar } from '../../services/Service';
+import Aluno from '../../models/Aluno';
+import Exercicio from '../../models/Exercicio';
 
 function PerfilAluno() {
 	const navigate = useNavigate();
@@ -39,8 +40,10 @@ function PerfilAluno() {
 		}
 	}, [id]);
 
+	const exerciciosDoAluno = aluno.exercicios || (aluno as any).exercicio || [];
+
 	return (
-		<div className="@container	container mx-auto m-2 rounded-2xl overflow-hidden mt-15 max-sm:px-1">
+		<div className="@container container mx-auto m-2 rounded-2xl overflow-hidden mt-15 max-sm:px-1">
 			<div>
 				<img
 					className="w-full h-80 object-cover max-sm:h-40 max-lg:h-50"
@@ -89,7 +92,46 @@ function PerfilAluno() {
 				<div>
 					<h1>Lista de treino</h1>
 				</div>
-				<div>map do treino</div>
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+					{exerciciosDoAluno && exerciciosDoAluno.length > 0 ? (
+						exerciciosDoAluno.map((exercicio: Exercicio) => (
+							<div key={exercicio.id} className="bg-white rounded-lg shadow-md overflow-hidden">
+								<img src={exercicio.foto} alt={exercicio.nome} className="w-full h-48 object-cover" />
+								<div className="p-4">
+									<h3 className="font-bold text-lg text-gray-800">{exercicio.nome}</h3>
+									<p className="text-gray-600 mt-1">{exercicio.descricao}</p>
+									<div className="mt-3 grid grid-cols-2 gap-2 text-sm">
+										{exercicio.carga > 0 && (
+											<p className="text-gray-700">
+												<span className="font-medium">Carga:</span> {exercicio.carga} kg
+											</p>
+										)}
+										{exercicio.repeticao > 0 && (
+											<p className="text-gray-700">
+												<span className="font-medium">Repetições:</span> {exercicio.repeticao}
+											</p>
+										)}
+										{exercicio.tempo && (
+											<p className="text-gray-700">
+												<span className="font-medium">Tempo:</span> {exercicio.tempo}
+											</p>
+										)}
+										{exercicio.categoria && (
+											<p className="text-gray-700 col-span-2">
+												<span className="font-medium">Categoria:</span>{' '}
+												{exercicio.categoria.nome}
+											</p>
+										)}
+									</div>
+								</div>
+							</div>
+						))
+					) : (
+						<div className="col-span-full text-center py-8">
+							<p className="text-gray-500">Nenhum exercício atribuído a este aluno.</p>
+						</div>
+					)}
+				</div>
 			</div>
 		</div>
 	);
