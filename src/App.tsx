@@ -1,6 +1,4 @@
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import LoginCadastroForm from './pages/logincadastro/LoginCadastroForm';
 import { AuthProvider } from './contexts/AuthContext';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/home/Home';
@@ -8,21 +6,27 @@ import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
 import Sobre from './pages/sobre/Sobre';
 import Equipe from './pages/equipe/Equipe';
+import Perfil from './pages/perfil/Perfil';
+import HomePage from './pages/homepage/HomePage';
+import LoginCadastroForm from './pages/logincadastro/LoginCadastroForm';
 import ListaCategorias from './components/categorias/listacategorias/ListaCategorias';
 import FormCategoria from './components/categorias/formcategoria/FormCategoria';
 import DeletarCategoria from './components/categorias/deletarcategoria/DeletarCategoria';
 import ListaExercicios from './components/exercicios/listaexercicios/ListaExercicios';
 import FormExercicio from './components/exercicios/formexercicio/FormExercicio';
 import DeletarExercicio from './components/exercicios/deletarexercicio/DeletarExercicio';
-import Perfil from './pages/perfil/Perfil';
-import HomePage from './pages/homepage/HomePage';
+import ListaAluno from './components/aluno/listaaluno/ListaAluno';
+import FormAluno from './components/aluno/formaluno/FormAluno';
+import DeletarAluno from './components/aluno/deletaraluno/DeletarAluno';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 	return (
 		<>
 			<AuthProvider>
 				<ToastContainer />
-				<BrowserRouter basename='/'>
+				<BrowserRouter basename="/">
 					<Navbar />
 					<div className="min-h-[80vh]">
 						<Routes>
@@ -41,6 +45,10 @@ function App() {
 							<Route path="/exercicios/store" element={<FormExercicio />} />
 							<Route path="/exercicios/edit/:id" element={<FormExercicio />} />
 							<Route path="/exercicios/detroy/:id" element={<DeletarExercicio />} />
+							<Route path="/alunos" element={<ListaAluno />} />
+							<Route path="/alunos/store" element={<FormAluno />} />
+							<Route path="/alunos/edit/:id" element={<FormAluno />} />
+							<Route path="/alunos/destroy/:id" element={<DeletarAluno />} />
 						</Routes>
 					</div>
 					<Footer />

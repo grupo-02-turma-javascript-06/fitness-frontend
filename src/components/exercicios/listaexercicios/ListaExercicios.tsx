@@ -90,22 +90,22 @@ function ListaExercicios() {
 									id="simple-search"
 									className="w-full border-0 focus:ring-0 focus:outline-none py-2 px-4"
 									placeholder="Pesquisar Exercício"
-									value={query} 
+									value={query}
 									onChange={(e) => setQuery(e.target.value)}
 								/>
 							</div>
 						</form>
 					</div>
 					<div className="flex justify-center bg-white items-center p-1 md:pl-4 rounded-lg drop-shadow-lg border-2 border-[#FD6101]">
-						<div className='flex md:max-w-full'>
+						<div className="flex md:max-w-full">
 							<select
 								name="categoria"
 								id="categoria"
 								className="border-0 px-4 focus:ring-0 focus:outline-none text-[#FD6101] appearance-none text-center">
-								<option value="" selected >
+								<option value="" selected>
 									Ver categorias
 								</option>
-								
+
 								{exercicios.map((exercicio) => (
 									<>
 										<option key={exercicio.id} value={exercicio.id}>
@@ -114,7 +114,6 @@ function ListaExercicios() {
 									</>
 								))}
 							</select>
-							
 						</div>
 					</div>
 				</div>
