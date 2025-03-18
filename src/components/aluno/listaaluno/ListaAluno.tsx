@@ -37,21 +37,18 @@ function ListaAluno() {
 		}
 	}, [token]);
 
-	const filterAlunos = alunos.filter((aluno) =>
-		aluno.nome.toLowerCase().includes(query.toLowerCase()),
-	);
+	const filterAlunos = alunos.filter((aluno) => aluno.nome.toLowerCase().includes(query.toLowerCase()));
 
 	return (
 		<>
 			<div className="flex justify-center items-center bg-[#1E2729] flex-col ">
-				<Link to='/alunos/store'>
+				<Link to="/alunos/store">
 					<img
 						src="https://ik.imagekit.io/q5tv5x3k8/Move2Fit/Banner.svg?updatedAt=1741287556502"
 						alt="Mulher Fitness"
 						className="lg:h-full object-cover"
 					/>
 				</Link>
-				
 			</div>
 
 			<div className="flex flex-col justify-center items-center h-20 text-lg mx-5 md:mx-0">
