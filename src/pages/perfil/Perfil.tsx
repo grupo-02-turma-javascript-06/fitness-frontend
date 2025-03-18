@@ -31,23 +31,41 @@ function Perfil() {
 				/>
 
 				<div
-					className="relative mt-[-13rem] h-90 flex flex-col 
-    bg-[#1E2729] text-white text-2xl rounded-bl-lg rounded-br-lg items-center justify-center max-sm:mt-[-1rem] max-lg:mt-[-4rem]">
+					className="relative mt-[-13rem] h-50 flex flex-col bg-[#1E2729] text-white text-2xl rounded-bl-lg rounded-br-lg items-center justify-center max-sm:mt-[-1rem] max-lg:mt-[-4rem]">
 					<div className="absolute ml-20 top-10 max-sm:ml-0 max-sm:top-22 max-sm:flex-col max-sm:items-center max-sm:text-center max-lg:top-12 max-lg:ml-50">
 						<div className="">
 							<h2 className="font-bold text-3xl pb-2">{usuario.nome}</h2>
 							<h2>{usuario.usuario}</h2>
 						</div>
-						<div className="mt-10 max-sm:mt-7 ">
-							<p className="pb-1">Peso: {usuario.peso}</p>
-							<p className="pb-1">Altura: {usuario.altura}</p>
-							<p className="pb-1">IMC: {usuario.imc}</p>
-							<p className="pb-1">Classificação: {usuario.classificacao}</p>
+						
+					</div>
+				</div>
+
+				<div className="p-4 bg-white rounded-lg shadow-2xl w-full mx-auto mt-4">
+					<div className="flex flex-col sm:flex-row sm:justify-around justify-center items-center mb-2 text-center sm:text-start">
+						<div>
+							<p className="text-gray-700 font-medium">
+								Peso: <span className="font-semibold">{usuario.peso}</span> kg
+							</p>
+							<p className="text-gray-700 font-medium">
+								Altura: <span className="font-semibold">{usuario.altura}</span>m
+							</p>
+						</div>
+						<div>
+							<p className="text-gray-700 font-medium">
+								IMC: <span className="font-semibold">{usuario.imc}</span>
+							</p>
+							<p className="text-gray-700 font-medium">
+								Classificação: <span className="font-semibold">{usuario.classificacao}</span>
+							</p>
 						</div>
 					</div>
 				</div>
+
+
 			</div>
 		</div>
+		
 	);
 }
 

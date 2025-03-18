@@ -233,20 +233,24 @@ const Cadastro: React.FC = () => {
 						<span>Cadastrar</span>
 					)}
 				</button>
-				<p className="text-sm text-gray-700 mt-1 mb-3">cadastre-se com redes sociais</p>
-				<div className="flex justify-center space-x-4">
-					<a href="#" className="inline-flex p-2 ">
-						<GoogleLogo size={35} weight="bold" className="hover:text-[#FD6101]" />
-					</a>
-					<a href="#" className="inline-flex p-2 ">
-						<FacebookLogo size={35} weight="bold" className="hover:text-[#FD6101]" />
-					</a>
-					<a href="#" className="inline-flex p-2 ">
-						<GithubLogo size={35} weight="bold" className="hover:text-[#FD6101]" />
-					</a>
-					<a href="#" className="inline-flex p-2 ">
-						<LinkedinLogo size={35} weight="bold" className="hover:text-[#FD6101]" />
-					</a>
+				<div className="@container">
+					<p className="text-sm text-gray-700 mt-1 mb-3 sm:hidden max-lg:hidden">
+						cadastre-se com redes sociais
+					</p>
+					<div className="flex justify-center space-x-4 sm:hidden max-lg:hidden">
+						<a href="#" className="inline-flex p-2 ">
+							<GoogleLogo size={35} weight="bold" className="hover:text-[#FD6101]" />
+						</a>
+						<a href="#" className="inline-flex p-2 ">
+							<FacebookLogo size={35} weight="bold" className="hover:text-[#FD6101]" />
+						</a>
+						<a href="#" className="inline-flex p-2 ">
+							<GithubLogo size={35} weight="bold" className="hover:text-[#FD6101]" />
+						</a>
+						<a href="#" className="inline-flex p-2 ">
+							<LinkedinLogo size={35} weight="bold" className="hover:text-[#FD6101]" />
+						</a>
+					</div>
 				</div>
 			</form>
 		</>
