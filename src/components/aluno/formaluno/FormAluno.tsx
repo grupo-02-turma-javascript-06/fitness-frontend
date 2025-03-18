@@ -127,7 +127,7 @@ function FormAluno() {
 						</label>
 						<input
 							type="text"
-							placeholder="insira o link da foto do Aluno"
+							placeholder="Insira o link da foto do Aluno"
 							name="foto"
 							required
 							className="rounded-lg p-2 bg-[#D9D9D9] text-[#808080] border-0 focus:ring-0 focus:outline-none"
@@ -143,8 +143,8 @@ function FormAluno() {
 							</label>
 							<input
 								type="text"
-								placeholder="insira repetições"
-								name="foto"
+								placeholder="Insira o peso"
+								name="peso"
 								required
 								className="rounded-lg p-2 bg-[#D9D9D9] text-[#808080] border-0 focus:ring-0 focus:outline-none"
 								value={aluno.peso}
@@ -152,13 +152,13 @@ function FormAluno() {
 							/>
 						</div>
 						<div className="flex flex-col gap-2 w-full">
-							<label htmlFor="tempo" className="text-[#1E2729]">
+							<label htmlFor="altura" className="text-[#1E2729]">
 								Altura
 							</label>
 							<input
 								type="text"
-								placeholder="insira o tempo"
-								name="tempo"
+								placeholder="Insira a altura"
+								name="altura"
 								required
 								className="rounded-lg p-2 bg-[#D9D9D9] text-[#808080] border-0 focus:ring-0 focus:outline-none"
 								value={aluno.altura}

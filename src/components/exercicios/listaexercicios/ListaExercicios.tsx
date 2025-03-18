@@ -57,7 +57,6 @@ function ListaExercicios() {
 
 			<div className="flex flex-col justify-center items-center h-20 text-lg mx-5 md:mx-0">
 				<div className="container flex flex-col md:flex-row justify-between gap-5 mt-15 md:mt-0">
-
 					<div className="flex flex-col gap-2 md:w-[80vw]">
 						<form className="flex justify-center items-center mx-auto w-full gap-4">
 							<label htmlFor="search" className="sr-only">
@@ -75,14 +74,12 @@ function ListaExercicios() {
 									placeholder="Pesquisar Exercício"
 									value={query}
 									onChange={(e) => setQuery(e.target.value)}
-									
 								/>
 							</div>
 						</form>
 					</div>
 					<div className="flex justify-center bg-white items-center p-1 md:pl-4 rounded-lg drop-shadow-lg border-2 border-[#FD6101]">
 						<div className="flex md:max-w-full">
-							
 							<select
 								name="categoria"
 								id="categoria"
