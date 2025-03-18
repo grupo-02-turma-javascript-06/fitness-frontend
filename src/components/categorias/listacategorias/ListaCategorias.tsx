@@ -48,13 +48,8 @@ function ListaCategorias() {
 
 	return (
 		<>
-
 			<div className=" bg-[#1E2729] ">
-				<img
-					src="/images/banner-categorias.svg"
-					alt="Banner de cadastro de Categorias"
-					className="w-full"
-				/>
+				<img src="/images/banner-categorias.svg" alt="Banner de cadastro de Categorias" className="w-full" />
 			</div>
 			<div className="@container flex flex-col gap-12 my-8 justify-center items-center">
 				<div className="flex flex-col justify-center items-center h-20 text-lg mx-5 md:mx-0">
@@ -109,8 +104,7 @@ function ListaCategorias() {
 						{filterCategorias.length === 0 && (
 							<span className="text-3xl text-center my-8">Nenhum exercício foi encontrado</span>
 						)}
-						<div
-							className="mx-auto my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:4 gap-6 md:gap-3">
+						<div className="mx-auto my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:4 gap-6 md:gap-3">
 							{filterCategorias.map((categoria) => (
 								<CardCategorias key={categoria.id} categoria={categoria} />
 							))}

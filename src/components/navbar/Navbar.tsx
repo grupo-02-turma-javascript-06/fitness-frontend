@@ -57,6 +57,9 @@ function Navbar() {
 							<Link to="/categorias" className="text-white hover:text-orange-500 transition-colors">
 								Categorias
 							</Link>
+							<Link to="/alunos" className="text-white hover:text-orange-500 transition-colors">
+								Alunos
+							</Link>
 							<Link to="/perfil">
 								{usuario.foto ? (
 									<img
@@ -80,7 +83,7 @@ function Navbar() {
 							</Link>
 						</div>
 
-						<div className='md:hidden flex gap-4 items-center'>
+						<div className="md:hidden flex gap-4 items-center">
 							<Link to="/perfil">
 								{usuario.foto ? (
 									<img
@@ -100,9 +103,6 @@ function Navbar() {
 								<List size={32} />
 							</button>
 						</div>
-
-						
-						
 					</div>
 				</div>
 
@@ -136,10 +136,7 @@ function Navbar() {
 								onClick={() => setIsOpen(false)}>
 								Categorias
 							</Link>
-							<Link
-								to="#"
-								onClick={logout}
-								className="block px-3 py-2 text-white hover:text-orange-500">
+							<Link to="#" onClick={logout} className="block px-3 py-2 text-white hover:text-orange-500">
 								Sair
 							</Link>
 						</div>

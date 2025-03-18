@@ -30,14 +30,12 @@ function Perfil() {
 					alt={`Foto de perfil de ${usuario.nome}`}
 				/>
 
-				<div
-					className="relative mt-[-13rem] h-50 flex flex-col bg-[#1E2729] text-white text-2xl rounded-bl-lg rounded-br-lg items-center justify-center max-sm:mt-[-1rem] max-lg:mt-[-4rem]">
+				<div className="relative mt-[-13rem] h-50 flex flex-col bg-[#1E2729] text-white text-2xl rounded-bl-lg rounded-br-lg items-center justify-center max-sm:mt-[-1rem] max-lg:mt-[-4rem]">
 					<div className="absolute ml-20 top-10 max-sm:ml-0 max-sm:top-22 max-sm:flex-col max-sm:items-center max-sm:text-center max-lg:top-12 max-lg:ml-50">
 						<div className="">
 							<h2 className="font-bold text-3xl pb-2">{usuario.nome}</h2>
 							<h2>{usuario.usuario}</h2>
 						</div>
-						
 					</div>
 				</div>
 
@@ -61,11 +59,8 @@ function Perfil() {
 						</div>
 					</div>
 				</div>
-
-
 			</div>
 		</div>
-		
 	);
 }
 
