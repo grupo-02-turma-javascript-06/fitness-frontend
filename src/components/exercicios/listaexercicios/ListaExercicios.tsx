@@ -57,23 +57,6 @@ function ListaExercicios() {
 
 			<div className="flex flex-col justify-center items-center h-20 text-lg mx-5 md:mx-0">
 				<div className="container flex flex-col md:flex-row justify-between gap-5 mt-15 md:mt-0">
-					<div className="flex flex-col">
-						<select
-							name="categoria"
-							id="categoria"
-							className="bg-[#D9D9D9] p-2 rounded-lg border-0 focus:ring-0 focus:outline-none text-[#808080]"
-							value={categoriaId}
-							onChange={(e) => setCategoriaId(e.target.value)}>
-							<option value="">Todas as Categorias</option>
-							{Array.from(new Set(exercicios.map((exercicio) => exercicio.categoria?.id)))
-								.filter((id) => id)
-								.map((id) => (
-									<option key={id} value={id}>
-										{exercicios.find((ex) => ex.categoria?.id === id)?.categoria?.nome}
-									</option>
-								))}
-						</select>
-					</div>
 
 					<div className="flex flex-col gap-2 md:w-[80vw]">
 						<form className="flex justify-center items-center mx-auto w-full gap-4">
@@ -92,27 +75,28 @@ function ListaExercicios() {
 									placeholder="Pesquisar Exercício"
 									value={query}
 									onChange={(e) => setQuery(e.target.value)}
+									
 								/>
 							</div>
 						</form>
 					</div>
 					<div className="flex justify-center bg-white items-center p-1 md:pl-4 rounded-lg drop-shadow-lg border-2 border-[#FD6101]">
 						<div className="flex md:max-w-full">
+							
 							<select
 								name="categoria"
 								id="categoria"
-								className="border-0 px-4 focus:ring-0 focus:outline-none text-[#FD6101] appearance-none text-center">
-								<option value="" selected>
-									Ver categorias
-								</option>
-
-								{exercicios.map((exercicio) => (
-									<>
-										<option key={exercicio.id} value={exercicio.id}>
-											{exercicio.nome}
+								className="border-0 px-4 focus:ring-0 focus:outline-none text-[#FD6101] appearance-none text-center"
+								value={categoriaId}
+								onChange={(e) => setCategoriaId(e.target.value)}>
+								<option value="">Todas as Categorias</option>
+								{Array.from(new Set(exercicios.map((exercicio) => exercicio.categoria?.id)))
+									.filter((id) => id)
+									.map((id) => (
+										<option key={id} value={id}>
+											{exercicios.find((ex) => ex.categoria?.id === id)?.categoria?.nome}
 										</option>
-									</>
-								))}
+									))}
 							</select>
 						</div>
 					</div>
