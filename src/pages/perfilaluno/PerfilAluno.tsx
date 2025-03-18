@@ -3,9 +3,9 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ToastAlerta } from '../../utils/ToastAlerta';
 import { buscar } from '../../services/Service';
+import { IMC_FAIXAS } from './ImcFaixasAluno';
 import Aluno from '../../models/Aluno';
 import Exercicio from '../../models/Exercicio';
-import { IMC_FAIXAS } from '../perfil/ImcFaixas';
 
 function PerfilAluno() {
 	const navigate = useNavigate();
