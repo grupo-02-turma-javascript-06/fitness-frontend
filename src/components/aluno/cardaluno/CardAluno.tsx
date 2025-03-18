@@ -43,7 +43,7 @@ function CardAluno({ aluno }: CardAlunoProps) {
 						</div>
 						<div className="flex justify-between items-center">
 							<button className="rounded-lg disabled:bg-slate-200 border-3 border-[#FD6101] hover:bg-[#FD6101] text-[#FD6101] hover:text-white font-bold  py-1 px-4 flex uppercase text-sm">
-								Ver Mais
+								<Link to={`/alunos/perfil/${aluno.id}`}>Ver Mais</Link>
 							</button>
 							<div className="flex justify-end gap-6 text-[#1E2729]">
 								<Link to={`/alunos/edit/${aluno.id}`}>

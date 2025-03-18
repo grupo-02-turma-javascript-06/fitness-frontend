@@ -20,6 +20,7 @@ import FormAluno from './components/aluno/formaluno/FormAluno';
 import DeletarAluno from './components/aluno/deletaraluno/DeletarAluno';
 
 import 'react-toastify/dist/ReactToastify.css';
+import PerfilAluno from './pages/perfilaluno/PerfilAluno';
 
 function App() {
 	return (
@@ -49,6 +50,7 @@ function App() {
 							<Route path="/alunos/store" element={<FormAluno />} />
 							<Route path="/alunos/edit/:id" element={<FormAluno />} />
 							<Route path="/alunos/destroy/:id" element={<DeletarAluno />} />
+							<Route path="/alunos/perfil/:id" element={<PerfilAluno />} />
 						</Routes>
 					</div>
 					<Footer />
