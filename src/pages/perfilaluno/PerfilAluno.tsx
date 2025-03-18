@@ -69,9 +69,18 @@ function PerfilAluno() {
 					alt={`Foto de perfil de ${aluno.nome}`}
 				/>
 
+				<div className="relative mt-[-13rem] h-50 flex flex-col bg-[#1E2729] text-white text-2xl rounded-bl-lg rounded-br-lg items-center justify-center max-sm:mt-[-1rem] max-lg:mt-[-4rem]">
+					<div className="absolute ml-20 top-10 max-sm:ml-0 max-sm:top-22 max-sm:flex-col max-sm:items-center max-sm:text-center max-lg:top-12 max-lg:ml-50">
+						<div className="">
+							<h2 className="font-bold text-3xl pb-2">{aluno.nome}</h2>
+							<h2>{aluno.email}</h2>
+						</div>
+					</div>
+				</div>
+
 				<div className="flex p-4 bg-white rounded-lg shadow-2xl w-full mx-auto mt-4 flex-col md:flex-row gap-4">
 					<div className="flex flex-col md:flex-row sm:justify-around justify-center items-center mb-2 text-center sm:text-start w-full">
-						<div className='flex flex-col gap-4'>
+						<div className="flex flex-col gap-4">
 							<p className="text-gray-700 font-medium">
 								Peso: <span className="font-semibold">{aluno.peso}</span> kg
 							</p>
@@ -82,44 +91,26 @@ function PerfilAluno() {
 								IMC: <span className="font-semibold">{aluno.imc}</span>
 							</p>
 							<p className="text-gray-700 font-medium ">
-								Classificação: <span className={`font-semibold p-2 rounded-lg ${imcStyle}`}>{aluno.classificacao}</span>
+								Classificação:{' '}
+								<span className={`font-semibold p-2 rounded-lg ${imcStyle}`}>
+									{aluno.classificacao}
+								</span>
 							</p>
 						</div>
 					</div>
 					<div className="flex md:flex-row justify-start items-start mb-2 text-center w-full">
-						<div className='md:w-[80%]'>
-							<div className='flex flex-col lg:flex-row justify-center items-center gap-4'> 
+						<div className="md:w-[80%]">
+							<div className="flex flex-col lg:flex-row justify-center items-center gap-4">
 								<img
 									className={`h-30 object-contain border-0 bg-white drop-shadow-lg p-4 px-10 rounded-[100%]`}
 									src={imcImagem}
 									alt="Classificação do IMC"
 								/>
 								<div>
-									<h2 className='text-xl font-bold text-center my-2'>Indicações IMC</h2>
-									<p className='px-4'>{imcDescricao}</p>
+									<h2 className="text-xl font-bold text-center my-2">Indicações IMC</h2>
+									<p className="px-4">{imcDescricao}</p>
 								</div>
 							</div>
-						</div>
-					</div>
-				</div>
-
-				<div className="p-4 bg-white rounded-lg shadow-2xl w-full mx-auto mt-4">
-					<div className="flex flex-col sm:flex-row sm:justify-around justify-center items-center mb-2 text-center sm:text-start">
-						<div>
-							<p className="text-gray-700 font-medium">
-								Peso: <span className="font-semibold">{aluno.peso}</span> kg
-							</p>
-							<p className="text-gray-700 font-medium">
-								Altura: <span className="font-semibold">{aluno.altura}</span>m
-							</p>
-						</div>
-						<div>
-							<p className="text-gray-700 font-medium">
-								IMC: <span className="font-semibold">{aluno.imc}</span>
-							</p>
-							<p className="text-gray-700 font-medium">
-								Classificação: <span className="font-semibold">{aluno.classificacao}</span>
-							</p>
 						</div>
 					</div>
 				</div>
