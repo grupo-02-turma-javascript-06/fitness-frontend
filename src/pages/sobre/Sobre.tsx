@@ -3,14 +3,14 @@ import { useState } from 'react';
 function Sobre() {
 	const [formData, setFormData] = useState({ nome: '', assunto: '' });
 
-	const handleChange = (e: { target: { name: any; value: any; }; }) => {
+	const handleChange = (e: { target: { name: any; value: any } }) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
 	};
 
-	const handleSubmit = (e: { preventDefault: () => void; }) => {
+	const handleSubmit = (e: { preventDefault: () => void }) => {
 		e.preventDefault();
 		const mailtoLink = `mailto:grupo02turmajavascript06@gmail.com?subject=${encodeURIComponent(
-			formData.assunto
+			formData.assunto,
 		)}&body=Nome: ${encodeURIComponent(formData.nome)}`;
 		window.location.href = mailtoLink;
 	};

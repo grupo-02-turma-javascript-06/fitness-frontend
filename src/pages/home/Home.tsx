@@ -29,7 +29,7 @@ export default function Home() {
 			<div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
 
 			<div className="flex flex-col justify-center items-center lg:items-start md:relative px-4 lg:px-8 py-32 z-10 text-left w-full">
-				<div className='lg:ml-40 mx-4 text-center md:text-start'>
+				<div className="lg:ml-40 mx-4 text-center md:text-start">
 					<h1 className="text-5xl md:text-6xl font-bold mb-6 text-[#FD6101]">Seja bem vinde!</h1>
 					<p className="text-xl md:text-xl max-w-xl mb-8 text-white">
 						Treinos organizados, resultados reais! Conectando alunos e personal trainers para uma jornada
@@ -41,7 +41,6 @@ export default function Home() {
 						</button>
 					</Link>
 				</div>
-				
 			</div>
 		</div>
 	);

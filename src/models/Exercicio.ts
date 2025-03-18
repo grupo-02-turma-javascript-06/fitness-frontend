@@ -10,5 +10,5 @@ export default interface Exercicio {
 	tempo: string;
 	foto: string;
 	categoria: Categoria | null;
-    aluno?: Aluno[] | null;
+	aluno?: Aluno[] | null;
 }
