@@ -90,13 +90,6 @@ function Perfil() {
 					</div>
 				</div>
 			</div>
-
-			<div>
-				<div>
-					<h1>Lista de treino</h1>
-				</div>
-				<div>map do treino</div>
-			</div>
 		</div>
 	);
 }
