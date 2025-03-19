@@ -116,9 +116,9 @@ function PerfilAluno() {
 				</div>
 			</div>
 
-			<div>
-				<div>
-					<h1>Lista de treino</h1>
+			<div className='my-10'>
+				<div className='flex justify-center py-6 mb-4'>
+					<h1 className='text-4xl font-semibold'>Lista de treino</h1>
 				</div>
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 					{exerciciosDoAluno && exerciciosDoAluno.length > 0 ? (
@@ -166,3 +166,4 @@ function PerfilAluno() {
 }
 
 export default PerfilAluno;
+
