@@ -21,11 +21,11 @@ import DeletarAluno from './components/aluno/deletaraluno/DeletarAluno';
 import PerfilAluno from './pages/perfilaluno/PerfilAluno';
 
 import 'react-toastify/dist/ReactToastify.css';
-import useHealthCheck from './hooks/useHealthCheck';
+// import useHealthCheck from './hooks/useHealthCheck';
 
 function App() {
 
-	useHealthCheck();
+	// useHealthCheck();
 
 	return (
 		<>
