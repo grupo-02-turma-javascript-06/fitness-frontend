@@ -1,3 +1,8 @@
+import { useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthContext';
+import { ToastAlerta } from '../../utils/ToastAlerta';
+
 const equipe = [
 	{
 		nome: 'Cauã Rocha Pereira',
@@ -51,6 +56,16 @@ const equipe = [
 ];
 
 function Equipe() {
+	const navigate = useNavigate();
+	const { usuario } = useContext(AuthContext);
+
+	useEffect(() => {
+		if (!usuario.token) {
+			navigate('/login');
+			ToastAlerta('Você precisa estar logado!', 'info');
+		}
+	}, [usuario, navigate]);
+
 	return (
 		<>
 			<div className="@container flex justify-center items-center w-full flex-col px-4 pt-5 max-lg:pt-0">
@@ -97,7 +112,7 @@ function Equipe() {
 						</div>
 					))}
 				</div>
-				<div className="mb-480 md:mb-10"></div>
+				<div className="mb-523 md:mb-10"></div>
 			</div>
 		</>
 	);
