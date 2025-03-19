@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import './LoginCadastroForm.css';
 import Usuario from '../../models/Usuario';
 import { cadastrarUsuario } from '../../services/Service';
@@ -36,17 +36,17 @@ const Cadastro: React.FC = () => {
 		return () => clearTimeout(timer);
 	}, [showPassword]);
 
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 
-	useEffect(() => {
-		if (usuario.id !== 0) {
-			retornar();
-		}
-	}, [usuario]);
+	// useEffect(() => {
+	// 	if (usuario.id !== 0) {
+	// 		retornar();
+	// 	}
+	// }, [usuario]);
 
-	function retornar() {
-		navigate('/login');
-	}
+	// function retornar() {
+	// 	navigate('/login');
+	// }
 
 	function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
 		setUsuario({
@@ -88,10 +88,10 @@ const Cadastro: React.FC = () => {
 			try {
 				await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario);
 				ToastAlerta('Usuário cadastrado com sucesso!', 'sucesso');
-				setTimeout(() => {
-					navigate('/login');
-					window.location.reload();
-				}, 100); // Aguarda 2 segundos antes de redirecionar e recarregar a página
+				// setTimeout(() => {
+				// 	navigate('/login');
+				// 	window.location.reload();
+				// }, 100); // Aguarda 2 segundos antes de redirecionar e recarregar a página
 			} catch (error) {
 				ToastAlerta('Erro ao cadastrar o usuário!', 'erro');
 			}
@@ -233,20 +233,24 @@ const Cadastro: React.FC = () => {
 						<span>Cadastrar</span>
 					)}
 				</button>
-				<p className="text-sm text-gray-700 mt-1 mb-3">cadastre-se com redes sociais</p>
-				<div className="flex justify-center space-x-4">
-					<a href="#" className="inline-flex p-2 ">
-						<GoogleLogo size={35} weight="bold" className="hover:text-[#FD6101]" />
-					</a>
-					<a href="#" className="inline-flex p-2 ">
-						<FacebookLogo size={35} weight="bold" className="hover:text-[#FD6101]" />
-					</a>
-					<a href="#" className="inline-flex p-2 ">
-						<GithubLogo size={35} weight="bold" className="hover:text-[#FD6101]" />
-					</a>
-					<a href="#" className="inline-flex p-2 ">
-						<LinkedinLogo size={35} weight="bold" className="hover:text-[#FD6101]" />
-					</a>
+				<div className="@container">
+					<p className="text-sm text-gray-700 mt-1 mb-3 sm:hidden max-lg:hidden">
+						cadastre-se com redes sociais
+					</p>
+					<div className="flex justify-center space-x-4 sm:hidden max-lg:hidden">
+						<a href="#" className="inline-flex p-2 ">
+							<GoogleLogo size={35} weight="bold" className="hover:text-[#FD6101]" />
+						</a>
+						<a href="#" className="inline-flex p-2 ">
+							<FacebookLogo size={35} weight="bold" className="hover:text-[#FD6101]" />
+						</a>
+						<a href="#" className="inline-flex p-2 ">
+							<GithubLogo size={35} weight="bold" className="hover:text-[#FD6101]" />
+						</a>
+						<a href="#" className="inline-flex p-2 ">
+							<LinkedinLogo size={35} weight="bold" className="hover:text-[#FD6101]" />
+						</a>
+					</div>
 				</div>
 			</form>
 		</>

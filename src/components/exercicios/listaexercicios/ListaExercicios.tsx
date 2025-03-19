@@ -12,7 +12,8 @@ function ListaExercicios() {
 	const navigate = useNavigate();
 
 	const [exercicios, setExercicios] = useState<Exercicio[]>([]);
-	const [query, setQuery] = useState(''); // Adicionando estado para pesquisa
+	const [query, setQuery] = useState('');
+	const [categoriaId, setCategoriaId] = useState('');
 
 	const { usuario, handleLogout } = useContext(AuthContext);
 	const token = usuario.token;
@@ -40,9 +41,10 @@ function ListaExercicios() {
 		}
 	}, [token]);
 
-	// Filtrando os exercícios com base no nome e no valor da pesquisa
-	const filterExercicios = exercicios.filter((exercicio) =>
-		exercicio.nome.toLowerCase().includes(query.toLowerCase()),
+	const filterExercicios = exercicios.filter(
+		(exercicio) =>
+			exercicio.nome.toLowerCase().includes(query.toLowerCase()) &&
+			(categoriaId === '' || String(exercicio.categoria?.id) === categoriaId),
 	);
 
 	return (
@@ -55,24 +57,6 @@ function ListaExercicios() {
 
 			<div className="flex flex-col justify-center items-center h-20 text-lg mx-5 md:mx-0">
 				<div className="container flex flex-col md:flex-row justify-between gap-5 mt-15 md:mt-0">
-					{/* <div className="flex flex-col gap-2 md:w-[20vw]">
-						<select
-							name="categoria"
-							id="categoria"
-							className="bg-[#D9D9D9] p-2 rounded-lg border-0 focus:ring-0 focus:outline-none text-[#808080]">
-							<option value="" selected disabled>
-								Categorias
-							</option>
-							{exercicios.map((exercicio) => (
-								<>
-									<option key={exercicio.id} value={exercicio.id}>
-										{exercicio.nome}
-									</option>
-								</>
-							))}
-						</select>
-					</div> */}
-
 					<div className="flex flex-col gap-2 md:w-[80vw]">
 						<form className="flex justify-center items-center mx-auto w-full gap-4">
 							<label htmlFor="search" className="sr-only">
@@ -88,11 +72,30 @@ function ListaExercicios() {
 									id="simple-search"
 									className="w-full border-0 focus:ring-0 focus:outline-none py-2 px-4"
 									placeholder="Pesquisar Exercício"
-									value={query} // Vinculando o estado `query` ao valor do input
-									onChange={(e) => setQuery(e.target.value)} // Atualizando o estado conforme o usuário digita
+									value={query}
+									onChange={(e) => setQuery(e.target.value)}
 								/>
 							</div>
 						</form>
+					</div>
+					<div className="flex justify-center bg-white items-center p-1 md:pl-4 rounded-lg drop-shadow-lg border-2 border-[#FD6101]">
+						<div className="flex md:max-w-full">
+							<select
+								name="categoria"
+								id="categoria"
+								className="border-0 px-4 focus:ring-0 focus:outline-none text-[#FD6101] appearance-none text-center"
+								value={categoriaId}
+								onChange={(e) => setCategoriaId(e.target.value)}>
+								<option value="">Todas as Categorias</option>
+								{Array.from(new Set(exercicios.map((exercicio) => exercicio.categoria?.id)))
+									.filter((id) => id)
+									.map((id) => (
+										<option key={id} value={id}>
+											{exercicios.find((ex) => ex.categoria?.id === id)?.categoria?.nome}
+										</option>
+									))}
+							</select>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -108,12 +111,12 @@ function ListaExercicios() {
 				/>
 			)}
 
-			<div className="flex justify-center w-full my-4 mt-15 md:mt-0">
-				<div className="container flex flex-col mx-2">
+			<div className="flex justify-center  my-4 mt-15 md:mt-0">
+				<div className="flex flex-col mx-2 max-w-[1540px]">
 					{filterExercicios.length === 0 && (
 						<span className="text-3xl text-center my-8">Nenhum exercício foi encontrado</span>
 					)}
-					<div className="container mx-auto my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					<div className="mx-auto my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 						{filterExercicios.map((exercicio) => (
 							<CardExercicios key={exercicio.id} exercicio={exercicio} />
 						))}

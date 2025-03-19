@@ -9,9 +9,9 @@ interface CardExerciciosProps {
 function CardExercicios({ exercicio }: CardExerciciosProps) {
 	return (
 		<>
-			<div className="drop-shadow-lg flex flex-col rounded-lg overflow-hidden justify-center bg-white text-[#1E2729]">
-				<div className="w-full items-center">
-					<img src={exercicio.foto} alt={exercicio.nome} className="w-full h-65 object-cover" />
+			<div className="md:min-h-50 drop-shadow-lg flex flex-col rounded-lg overflow-hidden bg-white text-[#1E2729] ">
+				<div className="w-full  items-center">
+					<img src={exercicio.foto} alt={exercicio.nome} className="w-full h-[270px] object-cover" />
 				</div>
 
 				<div className="flex flex-col py-6 gap-4 px-8">
