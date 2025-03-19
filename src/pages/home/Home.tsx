@@ -32,7 +32,7 @@ export default function Home() {
 				<div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
 
 				<div className="flex max-w-[1440px] flex-col justify-center items-center lg:items-start ml-4 z-10 text-left w-full">
-					<div className='mx-4 md:mx-0 text-center md:text-start'>
+					<div className='lg:ml-15 mx-4 md:mx-0 text-center md:text-start'>
 						<h1 className="text-5xl md:text-6xl font-bold mb-6 text-[#FD6101]">Seja bem vinde!</h1>
 						<p className="text-xl md:text-xl max-w-xl mb-8 text-white">
 							Treinos organizados, resultados reais! Conectando alunos e personal trainers para uma jornada

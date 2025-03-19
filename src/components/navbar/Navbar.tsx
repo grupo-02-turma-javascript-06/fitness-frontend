@@ -136,6 +136,12 @@ function Navbar() {
 								onClick={() => setIsOpen(false)}>
 								Categorias
 							</Link>
+							<Link 
+								to="/alunos" 
+								className="block px-3 py-2 text-white hover:text-orange-500"
+								onClick={() => setIsOpen(false)}>
+								Alunos
+							</Link>
 							<Link to="#" onClick={logout} className="block px-3 py-2 text-white hover:text-orange-500">
 								Sair
 							</Link>

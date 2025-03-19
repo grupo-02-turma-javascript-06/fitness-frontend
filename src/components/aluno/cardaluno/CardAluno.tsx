@@ -9,9 +9,9 @@ interface CardAlunoProps {
 function CardAluno({ aluno }: CardAlunoProps) {
 	return (
 		<>
-			<div className="drop-shadow-lg flex flex-col rounded-2xl overflow-hidden justify-between bg-white text-[#1E2729]">
-				<div>
-					<div className="flex w-full  items-center gap-4">
+			<div className="drop-shadow-lg flex rounded-2xl max-w-88 bg-white text-[#1E2729]">
+				<div className='flex flex-col'>
+					<div className="flex w-[80%] p-3 justify-center items-center gap-4 mx-auto">
 						<img src={aluno.foto} alt="Imagem relacionada ao exercício" />
 					</div>
 					<div className="flex flex-col py-6 gap-6 px-8">

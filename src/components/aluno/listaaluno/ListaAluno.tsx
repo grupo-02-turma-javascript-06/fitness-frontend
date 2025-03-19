@@ -89,12 +89,12 @@ function ListaAluno() {
 			)}
 
 			<div className="flex justify-center w-full my-4 mt-15 md:mt-0">
-				<div className="container flex flex-col mx-2">
+				<div className="flex flex-col mx-2">
 					{filterAlunos.length === 0 && (
 						<span className="text-3xl text-center my-8">Nenhum exercício foi encontrado</span>
 					)}
 					<div
-						className="container mx-auto my-4 
+						className="mx-auto my-4 
                         grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 						{filterAlunos.map((aluno) => (
 							<CardAluno key={aluno.id} aluno={aluno} />
